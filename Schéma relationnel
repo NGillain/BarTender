@@ -1,0 +1,16 @@
+
+utilisateur(IDutilisateur, statut, login, mdp)
+
+detail(IDutilisateur, nom, prenom, âge, sexe, [religion])
+
+allergies(IDutilisateur, allergène)
+
+addition(IDaddition, nclient, nserveur, table, date)
+
+consommation(IDaddition, nboisson, nom_boisson)
+
+image(type, logo)
+
+boisson(nom_boisson, prix_achat, prix_vente, description, photo, stock, type, max, seuil)
+
+allergies_boisson(nom, allergène)
