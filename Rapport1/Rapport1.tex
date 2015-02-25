@@ -71,59 +71,58 @@ tabsize=4, % sets default tabsize to 2 spaces
 
 \renewcommand{\arraystretch}{1,2}
 
+\newcommand{\HRule}{\rule{\linewidth}{0.5mm}}
+\usepackage{tabu,enumerate}
+
 \usepackage[frenchb]{babel}
 
 \begin{document}
 %\maketitle
+
 \begin{titlepage}
-
-\fontfamily{phv}\selectfont
 \begin{center}
-LSINF 1225
-\end{center}
-\vspace*{\stretch{0.1}}
-\begin{center}\huge\bfseries
-Rapport 1
-\end{center}
-\hrule
 
-\begin{center}\large
-\end{center}
-\begin{center}\large
-\end{center}
-\begin{center}\large
-\end{center}
-\begin{center}\large
-\end{center}
-\begin{center}\large
-\end{center}
-\begin{center}\large
-\end{center}
-\begin{center}\large
-\end{center}
+\includegraphics[width=0.25\textwidth]{epl-logo}~\\[0.3cm]
+
+\textsc{\LARGE École Polytechnique de Louvain}\\[1cm]
+\textsc{\Large [LSINF~1225]}\\[0.1cm]
+\textsc{\Large Conception Orientée Objet }\\[0.1cm]
+\textsc{\Large et Gestion de Données}\\[0.9cm]
 
 
+\textsc{\Large Année 2014--2015}\\[0.5cm]
 
-\begin{center}\large
-\end{center}
+% Title
+\HRule \\[0.5cm]
+\textsc{\LARGE  Travail 1}\\[0.2cm]
+{ \huge \bfseries La Modélisation de Données \\[0.4cm] }
 
-\begin{center}\large
-Mathieu \bsc{Delandmeter} (62401300) \\ Nathan \bsc{Gillain} (62421300) \\ Maxime \bsc{Hanot} (61881300) \\ Alexandre \bsc{Jadin} (61371300)\\ Thomas \bsc{Marissal} (61651300) \\ Edouard \bsc{Vangangel} ()
-\end{center}
+\HRule \\[0.4cm]
 
-\begin{center}\large
-\end{center}
+% Authors, professors, tutor
+{\large
+\begin{tabu} to 0.7\linewidth {Xll}
+    \emph{Auteurs:}\\
+    \quad Mathieu \textsc{Delandmeter} & 6591\,--\,13\,--\,00\\
+    \quad Nathan \textsc{Gillain} & 6591\,--\,13\,--\,00\\
+    \quad Maxime \textsc{Hanot} & 6591\,--\,13\,--\,00\\
+    \quad Alexandre \textsc{Jadin} & 6591\,--\,13\,--\,00\\
+    \quad Thomas \textsc{Marissal} & 6591\,--\,13\,--\,00\\
+    \quad Edouard \textsc{Vangangel} & 6591\,--\,13\,--\,00\\[.5ex]   
+    \emph{Professeur:} \\
+    \quad Kim \textsc{Mens}\\[.5ex]
+    \emph{Tuteur:}\\
+    \quad Benoit \textsc{Xxx}\\
+\end{tabu}
+}
 
-\begin{center}\large
-Tuteur : Benoît \bsc{Baufays}
-\end{center}
+\vfill
 
-\vspace*{\stretch{2}}
-\begin{center}
-Ann\'ee acad\'emique 2014 - 2015
+% Bottom of the page
+{\large \today}
+
 \end{center}
 \end{titlepage}
-
 
 %%%%%% LE DOCUMENT COMMENCE ICI %%%%%%%%
 
