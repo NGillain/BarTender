@@ -1,4 +1,9 @@
 # BarTender
-repository pour le projet COO bartender
 
-Si vous n'êtes pas interessé, ALLEZ-VOUS EN!
+Repository pour le projet COO bartender
+
+- faits élémentaires (done)
+- schéma ORM (done)
+- schéma relationnel (done)
+- Base de données (to do)
+- Rapport S5 (to do)
