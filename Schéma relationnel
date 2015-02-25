@@ -1,9 +1,9 @@
 
-utilisateur(IDutilisateur, statut, login, mdp)
+utilisateur(login, statut, mdp)
 
-detail(IDutilisateur, nom, prenom, âge, sexe, [religion])
+detail(login, nom, prenom, âge, sexe, [religion])
 
-allergies(IDutilisateur, allergène)
+allergies(login, allergène)
 
 addition(IDaddition, nclient, nserveur, table, date)
 
