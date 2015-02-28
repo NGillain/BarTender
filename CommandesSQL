@@ -1,0 +1,41 @@
+Commandes SQLITE\
+\
+CREATE Table BOISSON ( NOM char(32) not null, PRIXACHAT decimal(9,2) not null, PRIXVENTE decimal(9,2) not null, DESCRIPTION char(256), PHOTO char(32), TYPE char(16), STOCK integer(3), SEUIL integer(3), MAX integer(3), primary key (NOM), unique (DESCRIPTION), unique (PHOTO) );
+
+Commandes pour la table BarTender:
+
+CREATE Table BOISSON ( NOM char(32) not null, PRIXACHAT decimal(9,2) not null, PRIXVENTE decimal(9,2) not null, DESCRIPTION char(256), PHOTO char(32), TYPE char(16), STOCK integer(3), SEUIL integer(3), MAX integer(3), primary key (NOM), unique (DESCRIPTION), unique (PHOTO) );
+
+CREATE Table Utilisateur ( Login char(32) not null, MotDePasse char(32) not null, Statut char(16) not null DEFAULT 'Client',Sexe char(1),Religion char(32),Age INT(3),Nom Char(64),Primary key (Login));
+INSERT INTO Utilisateur (Login,MotDePasse,Statut,Sexe,Religion,Age,Nom) VALUES ('AMaalouf','AllahWakbar','Serveur','M','Islam',42,'Ahmed Maalouf');
+INSERT INTO Utilisateur (Login,MotDePasse,Statut,Sexe,Religion,Age,Nom) VALUES ('Abra','Kadabra','Client','M','Judaïsme',24,'Abraham Iosov');
+
+CREATE Table Allergies(Login char(32) not null,Allergene char(32) not null);
+INSERT INTO Allergies (Login,Allergene) VALUES ('Abra','Soja');
+
+CREATE Table Addition(AddNum int(9) not null,Date DATETIME not null, ServeurLogin char(32) not null, ClientLogin char(32) not null,NumTable int(2) not null, primary key (Num));
+INSERT INTO Addition (AddNum,Date,ServeurLogin,ClientLogin,NumTable) VALUES (1,'2015-02-26','AMaalouf','Abra',4);
+INSERT INTO Addition (AddNum,Date,ServeurLogin,ClientLogin,NumTable) VALUES (2,'2015-02-28','AMaalouf','Abra',6);
+
+CREATE Table Consommation(AddNum int(9) not null, Boisson char(32) not null, Qté int(2) not null, , CONSTRAINT unq UNIQUE (Boisson, AddNum));
+INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (1,'Coca-Cola',2);
+INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (1,'Bière',2);
+INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (2,'Bière',2);
+
+Tests des requêtes SQL
+
+– Compter combien de types de boissons différentes on peut trouver sur la carte de boissons.
+– Trouver toutes les boissons qui font partie d’une commande donnée.
+– Calculer le total pour une commande donnée.
+– Trouver toutes les boissons, et leur nombre, vendues par un serveur donné.
+– Calculer l’addition pour une table donnée, sachant que cette table peut avoir fait plusieurs commandes.
+– Trouver toutes les boissons dont ils ne restent plus assez en stock (qui sont en dessous du seuil et
+qui doivent donc être commandées chez le fournisseur).
+
+Select Count(Nom) FROM BOISSONS
+Select Boisson FROM Consommation WHERE AddNum=1
+Select sum(B.PRIXVENTE*C.Qté) FROM Consommation C, BOISSON B, Addition A WHERE A.AddNum=1 AND A.AddNum=C.AddNum AND B.Nom=C.Boisson
+Select sum(C.Qté) FROM BOISSON B ,Consommation C,Addition A, Utilisateur U WHERE U.Login='AMaalouf' AND U.Login=A.ServeurLogin AND A.Num=C.AddNum AND C.Boisson=B.NOM GROUP BY B.NOM
+Select B.Nom FROM BOISSON B WHERE B.QSTOCK<B.SEUIL
+
+Select Ai.Login,Ui.Allergene,Ae.NomBoisson FROM Utilisateur U,Allergene Ae,Allergies Ai WHERE Ae.Allergene=Ai.Allergene
