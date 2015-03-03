@@ -1,0 +1,7 @@
+DROP TABLE Addition;
+DROP TABLE Allergies;
+DROP TABLE Boisson;
+DROP TABLE Consommation;
+DROP TABLE Utilisateur;
+DROP TABLE Images;
+DROP TABLE Allergies_boisson;
