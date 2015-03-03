@@ -22,6 +22,6 @@ INSERT INTO Boissons VALUES('Bouteille de vin rosé', 13, 20, "", "", 5, 17, 10,
             4) Spiritueux
             5) Vins
             
-CREATE TABLE Allergies_boisson(nom char(32) not null, allergène char(32) not null)
+CREATE TABLE Allergies_boisson(nom char(32) not null REFERENCES Boisson(nom), allergène char(32) not null)
 INSERT INTO Allergies_boisson VALUES('Cappucino', "lactose")
 INSERT INTO Allergies_boisson VALUES('Ricard', "lactose")
