@@ -13,10 +13,10 @@ INSERT INTO Addition (AddNum,Date,ServeurLogin,ClientLogin,NumTable) VALUES (1,'
 INSERT INTO Addition (AddNum,Date,ServeurLogin,ClientLogin,NumTable) VALUES (2,'2015-02-28','AMaalouf','Abra',6);
 
 CREATE Table Consommation(AddNum int(9) not null, Boisson char(32) not null REFERENCES Boisson(nom), Qté int(2) not null, CONSTRAINT unq UNIQUE (Boisson, AddNum));
-INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (1,'Coca-Cola',2);
-INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (1,'Bière',2);
-INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (2,'Bière',2);
-INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (2,'Martini Blanc',1);
+INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (1,'Sprite',2);
+INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (1,'Jupiler 25cl',2);
+INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (2,'Jupiler 25cl',2);
+INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (2,'Ricard',1);
 
 CREATE TABLE Boisson (nom char(32) not null, prix_achat int not null, prix_vente int not null, description char(256), photo char(32), type int not null REFERENCES Images(type), stock int not null, seuil int not null, max int not null, unique(description), Primary Key(nom));
 
