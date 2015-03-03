@@ -166,13 +166,24 @@ Cette extension va de paire avec l'historique : en effet, le client aura des pr�
 \subsection*{Requête SQL}
 
 \begin{itemize}
-\item Select Count(Nom) FROM Boisson
-\item Select Boisson FROM Consommation WHERE AddNum=1
-\item Select sum(B.PRIXVENTE*C.Qté) FROM Consommation C, Boisson B, Addition A WHERE A.AddNum=1 AND A.AddNum=C.AddNum AND B.Nom=C.Boisson
-\item Select sum(C.Qté) FROM Boisson B, Consommation C, Addition A, Utilisateur U WHERE U.Login='AMaalouf' AND U.Login=A.ServeurLogin AND \\ A.Num=C.AddNum AND C.Boisson=B.NOM GROUP BY B.NOM
-\item Select B.Nom FROM Boisson B WHERE B.Stock<B.Seuil
+\item Compter combien de types de boissons différentes on peut trouver sur la carte de boissons.
+\\ Select Count(Nom) FROM Boisson
+\item Trouver toutes les boissons qui font partie d’une commande donnée.
+ \\ Select Boisson FROM Consommation WHERE AddNum=1
+\item Calculer le total pour une commande donnée.
+ \\ Select sum(B.PRIXVENTE*C.Qté) FROM Consommation C, Boisson B, Addition A WHERE A.AddNum=1 AND A.AddNum=C.AddNum AND B.Nom=C.Boisson
+\item Trouver toutes les boissons, et leur nombre, vendues par un serveur donné.
+ \\ Select Con.nom, SUM(Con.nboisson) FROM addition Add, consommation Con WHERE Add.login\_serveur = "Serveur Donné" AND \\ Con.IDaddition = Add.IDaddition GROUP BY Con.nom
+\item Calculer l’addition pour une table donnée, sachant que cette table peut avoir fait plusieurs commandes.
+ \\ Select sum(C.Qté) FROM Boisson B, Consommation C, Addition A, Utilisateur U WHERE U.Login='AMaalouf' AND U.Login=A.ServeurLogin AND \\ A.Num=C.AddNum AND C.Boisson=B.NOM GROUP BY B.NOM
+\item Trouver toutes les boissons dont ils ne restent plus assez en stock (qui sont en dessous du seuil et
+qui doivent donc être commandées chez le fournisseur).
+ \\ Select B.Nom FROM Boisson B WHERE B.Stock<B.Seuil
+\item Trouver toutes les boissons contenant un allergène du Client
+ \\ Select Ai.Login,Ae.NomBoisson FROM Allergene Ae,Allergies Ai WHERE \\ Ae.Allergene=Ai.Allergene AND Ae.Login=Abra
+\item Trouver toutes les boissons qui ne contiennent aucun allergène d'un client donné par son login
+ \\ Select B.nom FROM Boisson B, Allergies\_boisson Ab, Allergies A WHERE B.nom = Ab.nom AND A.login = Abra AND A.allergène <> Ab.allergène
 
-\item Select Ai.Login, Ae.NomBoisson FROM Allergene Ae, Allergies Ai WHERE \\ Ae.Allergene=Ai.Allergene AND Ae.Login=Abra
 \end{itemize}
 
 
