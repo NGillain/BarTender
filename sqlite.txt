@@ -1,4 +1,4 @@
-CREATE TABLE boissons (id int not null, nom char(32) not null, prix_achat int not null, prix_vente int not null, description char(256), photo char(32), stock int not null, type int not null, max int not null, seuil int not null, unique(photo), Primary Key(id))
+CREATE TABLE boissons (nom char(32) not null, prix_achat int not null, prix_vente int not null, description char(256), photo char(32), stock int not null, type int not null, max int not null, seuil int not null, unique(photo), Primary Key(nom))
 
 
 INSERT INTO boissons VALUES(1, 'Sprite', 1, 2, "Le sprite est une limonade crée par Coca-Cola", 'sprite.jpg', 25, 1, 100, 50)
