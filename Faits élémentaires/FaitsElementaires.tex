@@ -1,0 +1,107 @@
+%% Le document à compléter en LaTeX
+% 
+
+
+%
+
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% % !TEX %root
+
+
+\documentclass[10pt, a4, oneside, headings=normal]{scrartcl}
+
+\usepackage{url}
+
+
+\usepackage{mhchem}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[np]{numprint} % affichage correct des nombres : \numprint{} > \np{}
+\usepackage{xspace}
+
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+\usepackage{SIunits}
+
+\usepackage{setspace} %pour la taille de l'interligne -> 1 par défaut
+\setstretch{1}
+
+\usepackage{geometry}
+\geometry{vmargin=2cm}
+
+
+\usepackage[frenchb]{babel}
+
+\begin{document}
+
+\titlehead{}
+\subject{}
+\title{Faits élémentaires}
+\subtitle{ }
+\author{Groupe F}
+\publishers{}
+\date{\today}
+
+\dedication{}
+
+\maketitle
+
+%%Ici commence le document
+Un utilisateur (login) "Michmichdu32"
+\begin{itemize}
+\item a un nom (string) "Michel Jacques"
+\item a un mot de passe (string) "iloveoz"
+\item possède un statut (serveur, patron, client) (string) "client"
+\item a un sexe (M, F) (string) "M"
+\item a une religion (string) "Islam"
+\item a un âge (numéro) 54
+\item a des allergies "gluten"
+\end{itemize}
+
+Un utilisateur (login) "Richy"
+\begin{itemize}
+\item a un nom (string) "Richard Vaillant"
+\item a un mot de passe (string) "HSBC2156"
+\item possède un statut (serveur, patron, client) (string) "serveur"
+\item a un sexe (M, F) (string) "M"
+\end{itemize}
+
+Une boisson (nom) "Café"
+\begin{itemize}
+\item a un prix d'achat (Euro) 0.3
+\item a un prix de vente HTVA (Euro) 2
+\item possède une description (string) "Expresso italien, doux et agréable"
+\item a une photo (string) "expresso.png"
+\item a un type (string) "Boisson chaude"
+\item a une quantité en stock (numéro) 36
+\item a un seuil (numéro) 24
+\item a un maximum (numéro) 58
+\item contient des allergènes (string) "lactose"
+\item a une quantité (numéro) 2 pour une addition (numéro) 1
+\end{itemize}
+
+Un type (string) "Boisson chaude"
+\begin{itemize}
+\item a un logo (string) "boissonchaude.jpg"
+\end{itemize}
+
+Une addition (numéro) 1
+\begin{itemize}
+\item a une date (string) "2015-03-04"
+\item possède une table (numéro) 1
+\item correspond à un utilisateur comme client (login) "Michmichdu32"
+\item correspond à un utilisateur comme serveur (login) "Richy"
+\end{itemize}
+
+\end{document}
