@@ -18,7 +18,7 @@ INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (1,'Bière',2);
 INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (2,'Bière',2);
 INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (2,'Martini Blanc',1);
 
-CREATE TABLE Boisson (nom char(32) not null, prix_achat int not null, prix_vente int not null, description char(256), photo char(32), type int not null, stock int not null, seuil int not null, max int not null, Primary Key(nom));
+CREATE TABLE Boisson (nom char(32) not null, prix_achat int not null, prix_vente int not null, description char(256), photo char(32), type int not null, stock int not null, seuil int not null, max int not null, unique(description), Primary Key(nom));
 
 
 INSERT INTO Boisson VALUES('Sprite', 1, 2, "Le sprite est une limonade crée par Coca-Cola", 'sprite.jpg', 1, 25, 50, 100);
