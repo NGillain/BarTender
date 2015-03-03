@@ -14,11 +14,11 @@ INSERT INTO Utilisateur (Login,MotDePasse,Statut,Sexe,Religion,Age,Nom) VALUES (
 CREATE Table Allergies(Login char(32) not null REFERENCES Utilisateur(login),Allergene char(32) not null);
 INSERT INTO Allergies (Login,Allergene) VALUES ('Abra','Soja');
 
-CREATE Table Addition(AddNum int(9) not null,Date DATETIME not null, ServeurLogin char(32) not null, ClientLogin char(32) not null,NumTable int(2) not null, primary key (AddNum));
+CREATE Table Addition(AddNum int(9) not null,Date DATETIME not null, ServeurLogin char(32) not null REFERENCES Utilisateur(login), ClientLogin char(32) not null REFERENCES Utilisateur(Login),NumTable int(2) not null, primary key (AddNum));
 INSERT INTO Addition (AddNum,Date,ServeurLogin,ClientLogin,NumTable) VALUES (1,'2015-02-26','Mik','Abra',4);
 INSERT INTO Addition (AddNum,Date,ServeurLogin,ClientLogin,NumTable) VALUES (2,'2015-02-28','AMaalouf','Abra',6);
 
-CREATE Table Consommation(AddNum int(9) not null, Boisson char(32) not null, Qté int(2) not null, CONSTRAINT unq UNIQUE (Boisson, AddNum));
+CREATE Table Consommation(AddNum int(9) not null, Boisson char(32) not null REFERENCES Boisson(nom_boisson), Qté int(2) not null, CONSTRAINT unq UNIQUE (Boisson, AddNum));
 INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (1,'Coca-Cola',2);
 INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (1,'Bière',2);
 INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (2,'Bière',2);
@@ -31,7 +31,7 @@ Tests des requêtes SQL
 – Trouver toutes les boissons qui font partie d’une commande donnée.
   Select Boisson FROM Consommation WHERE AddNum=1
 – Calculer le total pour une commande donnée.
-  Select SUM(B.PRIXVENTE*C.Qté) FROM Consommation C, Boisson B, Addition A WHERE A.AddNum=1 AND A.AddNum=C.AddNum AND B.Nom=C.Boisson
+  Select sum(B.PRIXVENTE*C.Qté) FROM Consommation C, Boisson B, Addition A WHERE A.AddNum=1 AND A.AddNum=C.AddNum AND B.Nom=C.Boisson
 – Trouver toutes les boissons, et leur nombre, vendues par un serveur donné.
   Select Con.nom_boisson, SUM(Con.nboisson) FROM addition Add, consommation Con WHERE Add.login_serveur = "Serveur Donné" AND Con.IDaddition = Add.IDaddition GROUP BY Con.nom_boisson
 – Calculer l’addition pour une table donnée, sachant que cette table peut avoir fait plusieurs commandes.
