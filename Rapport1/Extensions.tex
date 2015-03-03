@@ -1,0 +1,78 @@
+%% Le document à compléter en LaTeX
+% 
+
+
+%
+
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% % !TEX %root
+
+
+\documentclass[10pt, a4, oneside, headings=normal]{scrartcl}
+
+\usepackage{url}
+
+
+\usepackage{mhchem}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[np]{numprint} % affichage correct des nombres : \numprint{} > \np{}
+\usepackage{xspace}
+
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+\usepackage{SIUnits}
+
+\usepackage{setspace} %pour la taille de l'interligne -> 1 par défaut
+\setstretch{1}
+
+\usepackage{geometry}
+\geometry{vmargin=2cm}
+
+
+\usepackage[frenchb]{babel}
+
+\begin{document}
+
+\titlehead{}
+\subject{}
+\title{Extensions}
+\subtitle{}
+\author{Groupe F}
+\publishers{}
+\date{\today}
+
+\dedication{}
+
+\maketitle
+
+%%Ici commence le document
+
+\section{Première extension : "Historique"}
+L'utilisateur de l'application aura l'occasion de consulter un historique, différent selon son statut :
+\begin{itemize}
+\item Le client pourra voir quels achats il a effectués lors du mois écoulé, lui permettant ainsi de savoir à quelle fréquence il se rend dans le bar, qu'est-ce qu'il y consomme, combien il y consomme, lui permettant même ainsi de pouvoir faire attention à sa consommation d'alcool ou, pourquoi pas, à l'inverse (mais cela n'est éthiquement pas recommandé), de faire des concours avec ses amis pour qui boira le plus.
+
+\item Le patron pourra quant à lui consulter un historique de l'ensemble des achats effectués dans son bar, et cela lui servira de base à des statistiques très utiles sur les habitudes de ses clients, lui permettant de prévoir les stocks à avoir, comment adapter les prix, pour quels produits effectuer des promotions, etc.
+\end{itemize}
+
+\section{Deuxième extension : "Préférences"}
+Cette extension va de paire avec l'historique : en effet, le client aura des préférences explicites et implicites.
+\begin{itemize}
+\item Explicites : le client pourra indiquer dans son profil son âge, sa religion et ses allergies, ce qui permettra à l'application de ne pas lui proposer certains produits proscrits.
+\item Implicites : grâce à l'historique qui permettra à l'application de savoir quels produits sont généralement consommés par le client, celle-ci pourra adapter l'ordre de la carte pour lui proposer en premier lieu les boissons préférées du client.
+\end{itemize}
+
+
+\end{document}
