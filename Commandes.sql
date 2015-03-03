@@ -18,7 +18,7 @@ INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (1,'Bière',2);
 INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (2,'Bière',2);
 INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (2,'Martini Blanc',1);
 
-CREATE TABLE Boisson (nom char(32) not null, prix_achat int not null, prix_vente int not null, description char(256), photo char(32), type int not null, stock int not null, seuil int not null, max int not null, unique(description), Primary Key(nom));
+CREATE TABLE Boisson (nom char(32) not null, prix_achat int not null, prix_vente int not null, description char(256), photo char(32), type int not null REFERENCES Images(type), stock int not null, seuil int not null, max int not null, unique(description), Primary Key(nom));
 
 
 INSERT INTO Boisson VALUES('Sprite', 1, 2, "Sprite est une boisson gazeuse à base d'extraits de citron et de lime créée par The Coca-Cola Company en 1961. Son goût est proche de la limonade. Le Sprite contient du dioxyde de carbone, de l'acide citrique, de l'eau gazéifiée, du citrate de sodium, des essences naturelles et du benzoate de sodium.", 'sprite.jpg', 1, 25, 50, 100);
@@ -42,7 +42,7 @@ INSERT INTO Boisson VALUES('Limoncello', 2.4, 5.3, "Le limoncello est une liqueu
   --          4) Spiritueux
   --          5) Vins
 
-CREATE TABLE Image(type int not null, logo char(32) not null);
+CREATE TABLE Images(type int not null, logo char(32) not null);
 INSERT INTO Images VALUES(1, 'soft.jpg');
 INSERT INTO Images VALUES(2, 'boissonChaude.jpg');
 INSERT INTO Images VALUES(3, 'biere.jpg');
