@@ -18,7 +18,7 @@ CREATE Table Addition(AddNum int(9) not null,Date DATETIME not null, ServeurLogi
 INSERT INTO Addition (AddNum,Date,ServeurLogin,ClientLogin,NumTable) VALUES (1,'2015-02-26','Mik','Abra',4);
 INSERT INTO Addition (AddNum,Date,ServeurLogin,ClientLogin,NumTable) VALUES (2,'2015-02-28','AMaalouf','Abra',6);
 
-CREATE Table Consommation(AddNum int(9) not null, Boisson char(32) not null REFERENCES Boisson(nom_boisson), Qté int(2) not null, CONSTRAINT unq UNIQUE (Boisson, AddNum));
+CREATE Table Consommation(AddNum int(9) not null, Boisson char(32) not null REFERENCES Boisson(nom), Qté int(2) not null, CONSTRAINT unq UNIQUE (Boisson, AddNum));
 INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (1,'Coca-Cola',2);
 INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (1,'Bière',2);
 INSERT INTO Consommation (AddNum,Boisson,Qté) VALUES (2,'Bière',2);
@@ -33,7 +33,7 @@ Tests des requêtes SQL
 – Calculer le total pour une commande donnée.
   Select sum(B.PRIXVENTE*C.Qté) FROM Consommation C, Boisson B, Addition A WHERE A.AddNum=1 AND A.AddNum=C.AddNum AND B.Nom=C.Boisson
 – Trouver toutes les boissons, et leur nombre, vendues par un serveur donné.
-  Select Con.nom_boisson, SUM(Con.nboisson) FROM addition Add, consommation Con WHERE Add.login_serveur = "Serveur Donné" AND Con.IDaddition = Add.IDaddition GROUP BY Con.nom_boisson
+  Select Con.nom, SUM(Con.nboisson) FROM addition Add, consommation Con WHERE Add.login_serveur = "Serveur Donné" AND Con.IDaddition = Add.IDaddition GROUP BY Con.nom
 – Calculer l’addition pour une table donnée, sachant que cette table peut avoir fait plusieurs commandes.
   Select sum(C.Qté) FROM Boisson B ,Consommation C,Addition A, Utilisateur U WHERE U.Login='AMaalouf' AND U.Login=A.ServeurLogin AND A.Num=C.AddNum AND C.Boisson=B.NOM GROUP BY B.NOM
 – Trouver toutes les boissons dont ils ne restent plus assez en stock (qui sont en dessous du seuil et
@@ -42,4 +42,4 @@ qui doivent donc être commandées chez le fournisseur).
 - Trouver toutes les boissons contenant un allergène du Client ... (suppose la création d'une table allergènes semblable à allergies)
   Select Ai.Login,Ae.NomBoisson FROM Allergene Ae,Allergies Ai WHERE Ae.Allergene=Ai.Allergene AND Ae.Login=Abra
 - Trouver toutes les boissons qui ne contiennent aucun allergène d'un client donné par son login
-  Select B.nom_boisson FROM Boisson B, Allergies_boisson Ab, Allergies A WHERE B.nom_boisson = Ab.nom AND A.login = Abra AND A.allergène <> Ab.allergène
+  Select B.nom FROM Boisson B, Allergies_boisson Ab, Allergies A WHERE B.nom = Ab.nom AND A.login = Abra AND A.allergène <> Ab.allergène
