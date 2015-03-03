@@ -10,7 +10,7 @@
 % % !TEX %root
 
 
-\documentclass[10pt, a4, oneside, headings=normal]{scrreprt}
+\documentclass[11pt, a4, oneside, headings=normal]{scrreprt}
 
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
@@ -76,35 +76,37 @@ tabsize=4, % sets default tabsize to 2 spaces
 
 \usepackage[frenchb]{babel}
 
+\setlength{\parskip}{0.35cm}
+
 \begin{document}
 %\maketitle
 
 \begin{titlepage}
 \begin{center}
 
-\includegraphics[width=0.25\textwidth]{epl-logo}~\\[0.3cm]
+\includegraphics[width=0.25\textwidth]{epl-logo}~\\[0.4cm]
 
-\textsc{\LARGE École Polytechnique de Louvain}\\[1cm]
+\textsc{\LARGE École Polytechnique de Louvain}\\[1.2cm]
 \textsc{\Large [LSINF~1225]}\\[0.05cm]
 \textsc{\Large Conception Orientée Objet }\\[0.1cm]
-\textsc{\Large et Gestion de Données}\\[0.9cm]
+\textsc{\Large et Gestion de Données}\\[1.0cm]
 
 
-\textsc{\Large Groupe F --- Année 2014--2015}\\[0.5cm]
+\textsc{\Large Groupe F --- Année 2014--2015}\\[0.8cm]
 
 % Title
 \HRule \\[0.5cm]
 \textsc{\LARGE  Travail 1}\\[0.1cm]
 { \huge \bfseries La Modélisation de Données \\[0.3cm] }
 
-\HRule \\[0.4cm]
+\HRule \\[0.6cm]
 
 % Authors, professors, tutor
 {\large
 \begin{tabu} to 0.7\linewidth {Xll}
     \emph{Auteurs:}\\
     \quad Mathieu \textsc{Delandmeter} & 6240\,--\,13\,--\,00\\
-    \quad Nathan \textsc{Gillain} & \,--\,13\,--\,00\\
+    \quad Nathan \textsc{Gillain} & 7879\,--\,12\,--\,00\\
     \quad Maxime \textsc{Hanot} & 6591\,--\,13\,--\,00\\
     \quad Alexandre \textsc{Jadin} & 4844\,--\,13\,--\,00\\
     \quad Thomas \textsc{Marissal} & 8217\,--\,13\,--\,00\\
@@ -126,7 +128,20 @@ tabsize=4, % sets default tabsize to 2 spaces
 
 %%%%%% LE DOCUMENT COMMENCE ICI %%%%%%%%
 
-\tableofcontents
-fdfd
+%\tableofcontents
+
+\subsubsection{Introduction}
+
+Dans le cadre du cours de conception orientée objet et gestion de données, dispensé par le Professeur Kim Mens, il nous a été demandé d'implémenter une application \textit{Android} de type \textit{"Gestion de bar"}. Dans un premier temps, nous avons dû élaborer une base de donnée avec l'outil SQLite, tâche qui a nécessité plusieurs étapes. Dès lors, ce document, premier rapport de ce projet, a pour but d'expliquer la démarche que nous avons suivie ainsi que les délivrables que nous avons créés.
+
+\subsubsection{Démarche}
+
+Tout d'abord, nous avons dû déterminer les faits élémentaires qui était nécessaire à la construction de notre base de données. Ces faits élémentaires se retrouvent dans le fichier \textit{"faitselementaires.pdf"}. Ce fichier intègre en même temps une "population" afin de donner des exemples pour chacune des différentes données.
+
+Ensuite, grâce au logiciel \textit{"Dia"}, nous avons créé un schéma conceptuel ORM afin de visualiser les liens entre les différentes entités de notre système. Nous avons, également dû indiquer sur ce schéma les contraintes d'unicité ainsi que les rôles qui étaient obligatoires.
+
+Par la suite, nous avons traduit ce schéma conceptuel ORM en un schéma relationnel se trouvant dans le fichier "". Cette étape a permis de rendre beaucoup plus simple la création de notre base de donnée.
+
+Enfin, les deux derniers fichiers concernent directement notre base de donnée. Le premier d'entre eux "" consiste en la base de données proprement dites tandis que le second est un fichier texte reprenant toutes les commandes qui nous ont permis de créer notre base de donnée ainsi que d'autres commandes qui nous on permis de tester si celle-ci avait été correctement construite.
 
 \end{document}
