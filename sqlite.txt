@@ -22,13 +22,13 @@ INSERT INTO Boisson VALUES('Bouteille de vin rosé', 13, 20, "", "", 5, 17, 10, 
   --          4) Spiritueux
   --          5) Vins
             
-CREATE TABLE Image(type int not null REFERENCES Boissons(type), logo char(32) not null)
-INSERT INTO Images VALUES(1, 'soft.jpg')
-INSERT INTO Images VALUES(2, 'boissonChaude.jpg')
-INSERT INTO Images VALUES(3, 'biere.jpg')
-INSERT INTO Images VALUES(4, 'spiritueux.jpg')
-INSERT INTO Images VALUES(5, 'vin.jpg')
+CREATE TABLE Image(type int not null REFERENCES Boissons(type), logo char(32) not null);
+INSERT INTO Images VALUES(1, 'soft.jpg');
+INSERT INTO Images VALUES(2, 'boissonChaude.jpg');
+INSERT INTO Images VALUES(3, 'biere.jpg');
+INSERT INTO Images VALUES(4, 'spiritueux.jpg');
+INSERT INTO Images VALUES(5, 'vin.jpg');
             
-CREATE TABLE Allergies_boisson(nom char(32) not null REFERENCES Boisson(nom), allergène char(32) not null)
-INSERT INTO Allergies_boisson VALUES('Cappucino', "lactose")
-INSERT INTO Allergies_boisson VALUES('Ricard', "lactose")
+CREATE TABLE Allergies_boisson(nom char(32) not null REFERENCES Boisson(nom), allergène char(32) not null);
+INSERT INTO Allergies_boisson VALUES('Cappucino', "lactose");
+INSERT INTO Allergies_boisson VALUES('Ricard', "lactose");
