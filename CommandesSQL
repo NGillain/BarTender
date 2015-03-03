@@ -14,7 +14,7 @@ INSERT INTO Utilisateur (Login,MotDePasse,Statut,Sexe,Religion,Age,Nom) VALUES (
 CREATE Table Allergies(Login char(32) not null,Allergene char(32) not null);
 INSERT INTO Allergies (Login,Allergene) VALUES ('Abra','Soja');
 
-CREATE Table Addition(AddNum int(9) not null,Date DATETIME not null, ServeurLogin char(32) not null, ClientLogin char(32) not null,NumTable int(2) not null, primary key (Num));
+CREATE Table Addition(AddNum int(9) not null,Date DATETIME not null, ServeurLogin char(32) not null, ClientLogin char(32) not null,NumTable int(2) not null, primary key (AddNum));
 INSERT INTO Addition (AddNum,Date,ServeurLogin,ClientLogin,NumTable) VALUES (1,'2015-02-26','Mik','Abra',4);
 INSERT INTO Addition (AddNum,Date,ServeurLogin,ClientLogin,NumTable) VALUES (2,'2015-02-28','AMaalouf','Abra',6);
 
