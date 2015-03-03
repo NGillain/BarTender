@@ -42,7 +42,7 @@ INSERT INTO Boisson VALUES('Limoncello', 2.4, 5.3, "Le limoncello est une liqueu
   --          4) Spiritueux
   --          5) Vins
 
-CREATE TABLE Image(type int not null REFERENCES Boissons(type), logo char(32) not null);
+CREATE TABLE Image(type int not null, logo char(32) not null);
 INSERT INTO Images VALUES(1, 'soft.jpg');
 INSERT INTO Images VALUES(2, 'boissonChaude.jpg');
 INSERT INTO Images VALUES(3, 'biere.jpg');
