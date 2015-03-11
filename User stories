@@ -1,0 +1,92 @@
+%% Le document à compléter en LaTeX
+% 
+
+
+%
+
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% % !TEX %root
+
+
+\documentclass[10pt, a4, oneside, headings=normal]{scrartcl}
+
+\usepackage{url}
+
+
+\usepackage{mhchem}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[np]{numprint} % affichage correct des nombres : \numprint{} > \np{}
+\usepackage{xspace}
+
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+\usepackage{SIUnits}
+
+\usepackage{setspace} %pour la taille de l'interligne -> 1 par défaut
+\setstretch{1}
+
+\usepackage{geometry}
+\geometry{vmargin=2cm}
+
+
+\usepackage[frenchb]{babel}
+
+\begin{document}
+
+\titlehead{}
+\subject{}
+\title{Séance 6}
+\subtitle{Les histoires utilisateurs (user stories)}
+\author{Groupe F}
+\publishers{}
+\date{\today}
+
+\dedication{}
+
+\maketitle
+
+%%Ici commence le document
+\section{User stories}
+
+\subsection{Créer un compte}
+En tant que patron, afin de gérer les stocks et modifier les prix, je dois créer un compte protégé par un mot de passe.
+
+En tant que client, afin de consulter la carte, je dois créer un compte protégé par un mot de passe.
+
+En tant que serveur, afin d'effectuer une commande, je dois créer un compte protégé par un mot de passe.
+
+\subsection{Gestion des utilisateurs}
+En tant que serveur, afin d'effectuer une commande, je dois pouvoir m'authentifier.
+
+En tant que client, afin que mes données comme mes préférences ou mon historique soient pris en compte, je dois pouvoir m'authentifier.
+
+En tant que patron, afin de pouvoir gérer les stocks et modifier les prix, je dois pouvoir m'authentifier.
+
+\subsection{Sélectionner ses préférences}
+En tant que client, afin d'obtenir une présélection des boissons dans le but également de préserver ma santé, j'ai besoin de rentrer mes préférences comme mes allergies, ma religion, mon sexe ou mon âge.
+
+\subsection{Afficher l'historique}
+En tant que patron, afin d'obtenir un historique des additions et donc de pouvoir gérer ma comptabilité, je veux avoir accès à un historique de l'ensemble des achats effectués.
+
+En tant que client, afin d'obtenir un historique des achats que j'ai effectués, je veux avoir accès à un historique des achats.
+
+\subsection{Afficher la commande}
+En tant que client, afin de savoir ce que je dois déjà payer, je veux voir ma commande.
+
+\subsection{Afficher des informations sur une boisson}
+En tant que client utilisant l'application, afin de savoir si la boisson me plaît, je veux voir de plus amples informations sur cette boisson comme une brève description textuelle, une photo, etc.
+
+
+\end{document}
