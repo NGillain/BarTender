@@ -76,6 +76,8 @@ En tant que client, afin que mes données comme mes préférences ou mon histori
 
 En tant que patron, afin de pouvoir gérer les stocks et modifier les prix, je dois pouvoir m'authentifier.
 
+En tant qu'utilisateur, je dois pouvoir sélectionner ma langue afin de comprendre ce qui est écrit.
+
 \subsection{Sélectionner ses préférences}
 \emph{Toutes les stories liées aux préférences}
 \\
@@ -96,13 +98,12 @@ En tant que client, afin d'obtenir un historique des achats que j'ai effectués,
 
 En tant que client, afin de savoir ce que je dois déjà payer, je veux voir ma commande.
 
-\subsection{Afficher des informations sur une boisson}
-\emph{Toutes les stories liées aux informations sur une boisson}
+\subsection{Afficher la liste des boissons}
+\emph{Toutes les stories liées aux boissons et à leurs informations}
 \\
 
 En tant que client utilisant l'application, afin de savoir si la boisson me plaît, je veux voir de plus amples informations sur cette boisson comme une brève description textuelle, une photo, etc.
 
-\subsection{Divers -> trouver nom de catégorie}
 En tant que serveur, je dois pouvoir sélectionner la carte en cours afin de conseiller le client.
 
 En tant que serveur, je dois pouvoir sélectionner une table afin d'en consulter les commandes.
@@ -119,7 +120,14 @@ En tant que client, je dois pouvoir consulter la carte des boissons afin de voir
 
 En tant que client, je dois pouvoir voir la description d'une boisson afin d'avoir de plus amples informations sur cette boisson comme sa description, son degré d'alcool, sa photo, ses allergènes, etc.
 
-En tant que client, je veux pouvoir trouver une boisson avec un mot-clé ou une partie de mot afin de pouvoir gagner du temps et ne pas devoir la rechercher dans toute la carte.
+En tant qu'utilisateur, je veux pouvoir trouver une boisson avec un mot-clé ou une partie de mot afin de pouvoir gagner du temps et ne pas devoir la rechercher dans toute la carte.
+
+\subsection{Gestion des stocks}
+
+En tant que patron, je veux pouvoir gérer les stocks afin de savoir combien de boissons sont encore en stock et donc savoir lesquelles doivent être commandées chez le fournisseur.
+
+En tant que patron, je veux pouvoir remplir mon stock afin de pouvoir satisfaire les demandes des clients.
+
 
 
 
