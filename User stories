@@ -60,14 +60,16 @@
 %%Ici commence le document
 \section{User stories}
 
-\subsection{Créer un compte}
+\subsection{Gestion des utilisateurs}
+\emph{Toutes les stories liées à la gestion, la création d'un compte}
+\\
+
 En tant que patron, afin de gérer les stocks et modifier les prix, je dois créer un compte protégé par un mot de passe.
 
 En tant que client, afin de consulter la carte, je dois créer un compte protégé par un mot de passe.
 
 En tant que serveur, afin d'effectuer une commande, je dois créer un compte protégé par un mot de passe.
 
-\subsection{Gestion des utilisateurs}
 En tant que serveur, afin d'effectuer une commande, je dois pouvoir m'authentifier.
 
 En tant que client, afin que mes données comme mes préférences ou mon historique soient pris en compte, je dois pouvoir m'authentifier.
@@ -75,18 +77,44 @@ En tant que client, afin que mes données comme mes préférences ou mon histori
 En tant que patron, afin de pouvoir gérer les stocks et modifier les prix, je dois pouvoir m'authentifier.
 
 \subsection{Sélectionner ses préférences}
+\emph{Toutes les stories liées aux préférences}
+\\
+
 En tant que client, afin d'obtenir une présélection des boissons dans le but également de préserver ma santé, j'ai besoin de rentrer mes préférences comme mes allergies, ma religion, mon sexe ou mon âge.
 
 \subsection{Afficher l'historique}
+\emph{Toutes les stories liées à l'historique} 
+\\
+
 En tant que patron, afin d'obtenir un historique des additions et donc de pouvoir gérer ma comptabilité, je veux avoir accès à un historique de l'ensemble des achats effectués.
 
 En tant que client, afin d'obtenir un historique des achats que j'ai effectués, je veux avoir accès à un historique des achats.
 
 \subsection{Afficher la commande}
+\emph{Toutes les stories liées à la commande}
+\\
+
 En tant que client, afin de savoir ce que je dois déjà payer, je veux voir ma commande.
 
 \subsection{Afficher des informations sur une boisson}
+\emph{Toutes les stories liées aux informations sur une boisson}
+\\
+
 En tant que client utilisant l'application, afin de savoir si la boisson me plaît, je veux voir de plus amples informations sur cette boisson comme une brève description textuelle, une photo, etc.
+
+\subsection{Divers}
+En tant que serveur, je dois pouvoir sélectionner la carte en cours afin de conseiller le client.
+
+En tant que serveur, je dois pouvoir sélectionner une table afin d'en consulter les commandes.
+
+En tant que serveur, je dois pouvoir sélectionner une commande afin de voir quelles boissons ont été commandées par quelle table.
+
+En tant que serveur, je dois pouvoir gérer la facturation afin de faire payer le client.
+
+En tant que serveur, je dois pouvoir créer une nouvelle commande afin de servir le client.
+
+En tant que serveur, je dois pouvoir consulter l'inventaire afin de voir les stocks, quantités et seuils disponibles de chaque boisson.
+
 
 
 \end{document}
