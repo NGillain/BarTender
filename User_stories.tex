@@ -1,0 +1,142 @@
+%% Le document à compléter en LaTeX
+% 
+
+
+%
+
+% !TEX TS-program = pdflatex
+% !TEX encoding = UTF-8 Unicode
+
+% % !TEX %root
+
+
+\documentclass[10pt, a4, oneside, headings=normal]{scrartcl}
+
+\usepackage{url}
+
+
+\usepackage{mhchem}
+
+\usepackage[utf8]{inputenc}
+\usepackage[T1]{fontenc}
+\usepackage{lmodern}
+\usepackage[np]{numprint} % affichage correct des nombres : \numprint{} > \np{}
+\usepackage{xspace}
+
+\usepackage{booktabs} % for much better looking tables
+\usepackage{array} % for better arrays (eg matrices) in maths
+\usepackage{paralist} % very flexible & customisable lists (eg. enumerate/itemize, etc.)
+\usepackage{verbatim} % adds environment for commenting out blocks of text & for better verbatim
+\usepackage{subfig} % make it possible to include more than one captioned figure/table in a single float
+
+\usepackage{amsmath}
+
+\usepackage{graphicx}
+\usepackage{SIUnits}
+
+\usepackage{setspace} %pour la taille de l'interligne -> 1 par défaut
+\setstretch{1}
+
+\usepackage{geometry}
+\geometry{vmargin=2cm}
+
+
+\usepackage[frenchb]{babel}
+
+\begin{document}
+
+\titlehead{}
+\subject{}
+\title{Séance 6}
+\subtitle{Les histoires utilisateurs (user stories)}
+\author{Groupe F}
+\publishers{}
+\date{\today}
+
+\dedication{}
+
+\maketitle
+
+%%Ici commence le document
+\section{User stories}
+Toutes les histoires utilisateurs sont triées par catégorie. A la fin de chaque histoire se trouve entre parenthèses un chiffre indiquant le temps relatif que prendra l'implémentation de cette histoire.
+
+\subsection{Gestion des utilisateurs}
+
+\emph{Toutes les stories liées à la gestion, la création d'un compte}
+\\
+
+En tant que patron, afin de gérer les stocks et modifier les prix, je dois créer un compte protégé par un mot de passe. (10)
+
+En tant que client, afin de consulter la carte, je dois créer un compte protégé par un mot de passe. (10)
+
+En tant que serveur, afin d'effectuer une commande, je dois créer un compte protégé par un mot de passe. (10)
+
+En tant que serveur, afin d'effectuer une commande, je dois pouvoir m'authentifier. (2)
+
+En tant que client, afin que mes données comme mes préférences ou mon historique soient pris en compte, je dois pouvoir m'authentifier. (2)
+
+En tant que patron, afin de pouvoir gérer les stocks et modifier les prix, je dois pouvoir m'authentifier. (2)
+
+En tant qu'utilisateur, je dois pouvoir sélectionner ma langue afin de comprendre ce qui est écrit. (5)
+
+\subsection{Sélectionner ses préférences}
+\emph{Toutes les stories liées aux préférences}
+\\
+
+En tant que client, afin d'obtenir une présélection des boissons dans le but également de préserver ma santé, j'ai besoin de rentrer mes préférences comme mes allergies, ma religion, mon sexe ou mon âge.  (3)
+
+\subsection{Afficher l'historique}
+\emph{Toutes les stories liées à l'historique} 
+\\
+
+En tant que patron, afin d'obtenir un historique des additions et donc de pouvoir gérer ma comptabilité, je veux avoir accès à un historique de l'ensemble des achats effectués. (10)
+
+En tant que client, afin d'obtenir un historique des achats que j'ai effectués, je veux avoir accès à un historique des achats. (10)
+
+\subsection{Afficher la commande}
+\emph{Toutes les stories liées à la commande}
+\\
+
+En tant que client, afin de savoir ce que je dois déjà payer, je veux voir ma commande. (2)
+
+\subsection{Afficher la liste des boissons}
+\emph{Toutes les stories liées aux boissons et à leurs informations}
+\\
+
+En tant que client utilisant l'application, afin de savoir si la boisson me plaît, je veux voir de plus amples informations sur cette boisson comme une brève description textuelle, une photo, etc. (2)
+
+En tant que serveur, je dois pouvoir sélectionner la carte en cours afin de conseiller le client. (3)
+
+En tant que serveur, je dois pouvoir sélectionner une table afin d'en consulter les commandes. (2)
+
+En tant que serveur, je dois pouvoir sélectionner une commande afin de voir quelles boissons ont été commandées par quelle table. (3)
+
+En tant que serveur, je dois pouvoir créer une nouvelle commande afin de servir le client. (2)
+
+En tant que serveur, je dois pouvoir consulter l'inventaire afin de voir les stocks, quantités et seuils disponibles de chaque boisson. (1)
+
+En tant que client, je dois pouvoir consulter la carte des boissons afin de voir la liste des boissons disponibles en tenant compte de mes préférences. (7)
+
+En tant que client, je dois pouvoir voir la description d'une boisson afin d'avoir de plus amples informations sur cette boisson comme sa description, son degré d'alcool, sa photo, ses allergènes, etc. (1)
+
+En tant qu'utilisateur, je veux pouvoir trouver une boisson avec un mot-clé ou une partie de mot afin de pouvoir gagner du temps et ne pas devoir la rechercher dans toute la carte. (5)
+
+\subsection{Gestion des stocks}
+\emph{Toutes les stories à la gestion des stocks}
+\\
+
+En tant que patron, je veux pouvoir gérer les stocks afin de savoir combien de boissons sont encore en stock et donc savoir lesquelles doivent être commandées chez le fournisseur. (3)
+
+En tant que patron, je veux pouvoir remplir mon stock afin de pouvoir satisfaire les demandes des clients. (3)
+
+\subsection{Gestion des factures}
+\emph{Toutes les stories liées à la gestion des factures}
+\\
+
+En tant que client, je peux demander l'addition afin de clôturer la commande. (2)
+
+En tant que serveur, je dois pouvoir gérer la facturation afin de faire payer le client. (2)
+
+
+\end{document}
