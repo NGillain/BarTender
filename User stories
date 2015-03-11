@@ -102,7 +102,7 @@ En tant que client, afin de savoir ce que je dois déjà payer, je veux voir ma 
 
 En tant que client utilisant l'application, afin de savoir si la boisson me plaît, je veux voir de plus amples informations sur cette boisson comme une brève description textuelle, une photo, etc.
 
-\subsection{Divers}
+\subsection{Divers -> trouver nom de catégorie}
 En tant que serveur, je dois pouvoir sélectionner la carte en cours afin de conseiller le client.
 
 En tant que serveur, je dois pouvoir sélectionner une table afin d'en consulter les commandes.
@@ -114,6 +114,12 @@ En tant que serveur, je dois pouvoir gérer la facturation afin de faire payer l
 En tant que serveur, je dois pouvoir créer une nouvelle commande afin de servir le client.
 
 En tant que serveur, je dois pouvoir consulter l'inventaire afin de voir les stocks, quantités et seuils disponibles de chaque boisson.
+
+En tant que client, je dois pouvoir consulter la carte des boissons afin de voir la liste des boissons disponibles.
+
+En tant que client, je dois pouvoir voir la description d'une boisson afin d'avoir de plus amples informations sur cette boisson comme sa description, son degré d'alcool, sa photo, ses allergènes, etc.
+
+En tant que client, je veux pouvoir trouver une boisson avec un mot-clé ou une partie de mot afin de pouvoir gagner du temps et ne pas devoir la rechercher dans toute la carte.
 
 
 
