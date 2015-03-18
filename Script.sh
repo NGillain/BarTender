@@ -50,5 +50,5 @@ do
 
 	prixAchat=`echo "$prixAchat" | sed 's/,/\./g'`
 	prixVente=`echo "$prixVente" | sed 's/,/\./g'`
-	echo "INSERT INTO boisson VALUES ($nom, $prixAchat, $prixVente, '$photo', $stock, $max, $seuil, '$description');" >> commandes.sql
+	echo "INSERT INTO boisson VALUES ('$nom', $prixAchat, $prixVente, '$photo', $stock, $max, $seuil, '$description');" >> commandes.sql
 done < boissons.cvs
