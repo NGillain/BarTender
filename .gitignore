@@ -4,3 +4,6 @@
 *.gz
 *.out
 *.toc
+
+# Archives
+*.zip
