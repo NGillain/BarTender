@@ -15,3 +15,4 @@ Rapport2:
 -utiliser une classe historique à la place (liste chaînée de commandes & ops pour l'affichage des données et rapports)
 -justifier les multiplicités
 -attributs classe historique
+-justifier le type string pour la photo et autres si besoin
