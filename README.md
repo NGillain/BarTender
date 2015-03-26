@@ -16,3 +16,4 @@ Rapport2:
 -justifier les multiplicités
 -attributs classe historique
 -justifier le type string pour la photo et autres si besoin
+-nommer les argument dans les ops ou juste le type?
