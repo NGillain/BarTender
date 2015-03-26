@@ -1,0 +1,27 @@
+Classe serveur :
+// Attention, il faut pas mettre le nom des paramètres, juste leur type
+
+Opérations : 
+- printCarte() : void
+- printHistorique() : void
+- printInventaire() : void
+- createCommande(Client, Boisson, Date, unsigned int) : Commande // unsigned int pour le numero de table
+
+
+Classe patron :
+
+Opérations : 
+
+- createAddition(Client, Commande, Date, Serveur) : Addition
+- printHistorique() : void
+Modifier la BDD des boissons :
+ - addBDDboisson(double, double, string, string, unsigned int, unsigned int, string) : void
+ - change_prix_achat_boisson(Boisson, double) : void
+ - change_prix_vente_boisson(Boisson, double) : void
+ - change_description_boisson(Boisson, string) : void
+ - change_type_boisson(Boisson, string) : void
+ - change_photo_boisson(Boisson, string) : void
+ - change_quantite_boisson(Boisson, unsigned int) : void
+ - change_seuil_boisson(Boisson, unsigned int) : void
+ - change_maximum_boisson(Boisson, unsigned int) : void
+ - change_allergie_boisson(Boisson, string) : void
