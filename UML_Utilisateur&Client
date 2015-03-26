@@ -1,0 +1,34 @@
+Classe Utilisateur
+
+Responsabilités:
+
+- #changeusername(String newusername, String password, String confirmpassword) : Integer
+
+- #changepassword(String oldpassword, String newpassword, String confirmpassword) : Integer
+
+- #setage(Integer age) : void
+
+- #setsex(String sex) : void
+
+Je mettrai aussi 
+
+- #printmenu() : void
+
+- #printbill(Integer billnumber) : void
+
+- -settable(Integer tablenumber) : void
+
+ici plutôt que dans Acceuil
+
+
+Classe Client
+
+Responsabilités:
+
+- -setreligion(String religion) : void
+
+- -addallergy(String allergy) : void
+
+- -removeallergy(String allergy) : Integer
+
+
