@@ -16,4 +16,5 @@ Rapport2:
 -justifier les multiplicités
 -attributs classe historique
 -justifier le type string pour la photo et autres si besoin
--nommer les argument dans les ops ou juste le type?
+-nommer les argument dans les ops ou juste le type? 
+    Bonne question, dans l'exemple il ne les nomment pas mais dans le slide 12 du cours 8a il parle d'un nom d'argument (nomArg) donc perso je mettrais quand même. (Maxime)
