@@ -1,0 +1,12 @@
+====Boissons=====
+AfficherBoissons() : void
+AddBoissonCommande(Boisson, Commande) : void
+AddBoissonBDD(Boisson) : bool
+RemoveBoissonBDD(Boisson) : bool
+RemoveBoissonCommande(Boisson, Commande) : vpod
+
+====Commande====
+AfficherCommande() : void
+AddBoisson(Boisson) : void
+RemoveBoisson(Boisson) : void
+CloturerCommande() : void
