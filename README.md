@@ -20,3 +20,4 @@ Rapport2:
     Bonne question, dans l'exemple il ne les nomment pas mais dans le slide 12 du cours 8a il parle d'un nom d'argument (nomArg) donc perso je mettrais quand même. (Maxime)
 -ajouter recherche boisson au dia uml
 -printmenu dans utilisateur au lieu de acceuil
+-ajout d'une classe inventaire avec ttes les boissons (peut-être de même pour les clients)
