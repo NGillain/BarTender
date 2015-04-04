@@ -1,2 +1,3 @@
 Est-ce qu'on doit inclure les diagrammes etc dans le rapport en tant qu'annexe ou on les fournit à côté ?
 Plus : est-ce que quelqu'un peut recompiler le rapport ? J'ai pas tous les packages, du coup, ça compile mal...
+Désolé pour la faute d'orthographe dans le commit... ("à recompilé")
