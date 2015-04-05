@@ -5,4 +5,5 @@ Liste des fichiers :
 -Menu_sequence		: diagramme UML de séquence permettant d'afficher la carte (avec mot-clé si besoin)
 -newClient_sequence	: diagramme UML de séquence permettant de créer un client dans la base de données
 -Stock_sequence		: diagramme UML de séquence permettant d'afficher la liste des boissons à commander
+-Commande_sequence	: diagramme UML de séquence permettant à un serveur de calculer une addition
 -cartes_CRC-x		: l'ensemble des cartes CRC (non mises à jour) du projet
