@@ -134,19 +134,19 @@ tabsize=4, % sets default tabsize to 2 spaces
 
 Dans le cadre du cours de conception orientée objet et gestion de données, dispensé par le Professeur Kim Mens, il nous a été demandé d'implémenter une application \textit{Android} de type \textit{"Gestion de bar"}. 
 
-Après avoir élaborer une base de données en première partie de ce projet, nous nous sommes intéressés à la conception orientée objet.
+Après avoir élaboré une base de données en première partie de ce projet, nous nous sommes intéressés à la conception orientée objet.
 
 Ce rapport a pour but de lister et de décrire les différents documents que nous avons créés ainsi que d'expliquer nos choix de conception.
 
-Nous avons pour commencer créé des histoires d'utilisateurs et des cartes CRC, outils qui nous ont permis de créé un diagramme de classe UML et quelques diagrammes de séquences UML. Ces deux derniers documents seront essentiels à l'implémentation du notre application.
+Nous avons pour commencer créé des histoires d'utilisateurs et des cartes CRC, outils qui nous ont permis de créer un diagramme de classe UML et quelques diagrammes de séquences UML. Ces deux derniers documents seront essentiels à l'implémentation de notre application.
 
 \section*{Description des documents rendus}
 
-Cette section a pour but d'énumérer les différents documents que nous avons produit ainsi que d'en donner une courte description.
+Cette section a pour but d'énumérer les différents documents que nous avons produits ainsi que d'en donner une courte description.
 
 \subsection*{Histoires d'utilisateur}
 
-Nous avons rédigé toute une liste d'histoire d'utilisateur. Nous les avons réparties en huit catégories :
+Nous avons rédigé toute une liste d'histoires d'utilisateur. Nous les avons réparties en huit catégories :
 \begin{itemize}
 \item Gestion des utilisateurs
 \item Sélectionner ses préférences
@@ -170,7 +170,7 @@ Bien que celles-ci n'aient pas été mises à jour et donc que ce sont des broui
 
 \subsection*{Diagramme de classe UML}
 
-A partir des cartes CRC, nous avons créé un diagramme de classe UML. Celui-ci modélise toutes les classes que nous implémenterons dans notre application Android. Il reprend les variables et fonctions de chaque classe ainsi que les liens entre ces dernières.
+A partir des cartes CRC, nous avons créé un diagramme de classe UML. Celui-ci modélise toutes les classes que nous implémenterons dans notre application Android. Il reprend les variables et fonctions principales de chaque classe ainsi que les liens entre ces dernières.
 
 \subsection*{Diagrammes de séquences UML}
 
@@ -178,7 +178,7 @@ Nous avons réalisé quatre diagrammes de séquences UML. Ces diagrammes corresp
 
 \begin{itemize}
 \item En tant que client, afin de consulter la carte, je dois créer un compte protégé par un mot de passe.
-\item En tant que client, je dois pouvoir consulter la carte des boissons afin de voir la liste des boissons disponibles en tenant compte de mes préférences.
+\item En tant que client, je dois pouvoir consulter la carte des boissons (ainsi que d'effectuer une recherche sur base de mot-clés) afin de voir la liste des boissons disponibles en tenant compte de mes préférences.
 \item En tant que serveur, je veux pouvoir gérer les stocks afin de savoir combien de boissons sont encore en stock et donc savoir lesquelles doivent être commandées chez le fournisseur.
 \item En tant que serveur, je dois pouvoir gérer la facturation afin de faire payer le client.
 \end{itemize}
@@ -189,13 +189,13 @@ Nous avons réalisé quatre diagrammes de séquences UML. Ces diagrammes corresp
 
 Concernant les cartes CRC, nous avions dans un premier temps créé une carte \textit{"Addition"}. Cependant lors de la réalisation du diagramme de classe UML, nous nous sommes rendus compte que celle-ci n'avait pas d'intérêt. En effet, la classe \textit{"Commande"} était suffisante pour gérer tous les cas.
 
-A l'inverse, nous nous sommes rendus compte au même moment que pour pouvoir gérer notre extension "Préférence", nous avions besoin d'une classe \textit{"Historique"}. Cette dernière aura une fonction qui s'adapte à l'argument que l'on lui donne. En effet, si elle est appelée avec un argument de type "Client", l'historique des boissons qui ont été bues par ce client sera affiché. Inversement, si la fonction est appelée avec un argument de type "Boisson", elle affichera l'historique des clients qui ont bu cette boisson.
+A l'inverse, nous nous sommes rendus compte au même moment que pour pouvoir gérer notre extension "Préférence", nous avions besoin d'une classe \textit{"Historique"}. Cette dernière aura une fonction qui s'adapte à l'argument qu'on lui donne. En effet, si elle est appelée avec un argument de type "Client", l'historique des boissons qui ont été bues par ce client sera affiché. Inversement, si la fonction est appelée avec un argument de type "Boisson", elle affichera l'historique des clients qui ont bu cette boisson.
 
 \subsection*{Diagramme de classe UML et diagrammes de séquences UML}
 
 Dans le diagramme de classe UML, l'argument "photo" de boisson est de type string car il s'agit du chemin où se trouve la photo sur le dispositif.
 
-Dans les diagramme de séquences UML, un objet BDD (base de données) apparait alors qu'il n'y en a pas dans le diagramme de classe.
+Dans les diagrammes de séquences UML, un objet BDD (base de données) apparait alors qu'il n'y en a pas dans le diagramme de classe.
 En effet, dans le diagramme de classe, on décrit la structure du programme sans tenir compte de l'aspect base de données tandis que dans les diagrammes de séquences il est beaucoup plus logique d'expliquer l'accès à celle-ci afin de bien comprendre d'où viennent les données.
 
 \subsection*{Utilisation de la base de données}
