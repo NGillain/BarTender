@@ -5,7 +5,8 @@ rm commandes.sql
 while read line
 do
 	types=`echo "$line" | cut -d ";" -f 1`
-	nom=`echo "$line" | cut -d ";" -f 2 | sed "s/'/\\\\\'/g"`
+	#nom=`echo "$line" | cut -d ";" -f 2 | sed "s/'/\\\\\'/g"`
+	nom=`echo "$line" | cut -d ";" -f 2`
 	prixAchat=`echo "$line" | cut -d ";" -f 3`
 	prixVente=`echo "$line" | cut -d ";" -f 4`
 	photo=`echo "$line" | cut -d ";" -f 6`
@@ -13,7 +14,8 @@ do
 	max=`echo "$line" | cut -d ";" -f 8`
 	seuil=`echo "$line" | cut -d ";" -f 9`
 	allergies=`echo "$line" | cut -d ";" -f 10`
-	description=`echo "$line" | cut -d ";" -f 11 | sed "s/'/\\\\\'/g"`
+	#description=`echo "$line" | cut -d ";" -f 11 | sed "s/'/\\\\\'/g"`
+	description=`echo "$line" | cut -d ";" -f 11`
 	#echo "$description"
 
 
