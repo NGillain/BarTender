@@ -4,6 +4,7 @@ rm commandes.sql
 
 while read line
 do
+	types=`echo "$line" | cut -d ";" -f 1`
 	nom=`echo "$line" | cut -d ";" -f 2 | sed "s/'/\\\\\'/g"`
 	prixAchat=`echo "$line" | cut -d ";" -f 3`
 	prixVente=`echo "$line" | cut -d ";" -f 4`
@@ -48,8 +49,11 @@ do
 	then
 		description="null"
 	fi
+	if [[ -z "$types" ]]
+	then
+		types="null"
+	fi
 
-	types='5'
 	prixAchat=`echo "$prixAchat" | sed 's/,/\./g'`
 	prixVente=`echo "$prixVente" | sed 's/,/\./g'`
 	echo "INSERT INTO Boisson VALUES ('$nom', $prixAchat, $prixVente, '$description', '$photo', $types, $stock, $seuil, $max);" >> commandes.sql
