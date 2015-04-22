@@ -4,7 +4,7 @@ rm commandes.sql
 
 while read line
 do
-	nom=`echo "$line" | cut -d ";" -f 2`
+	nom=`echo "$line" | cut -d ";" -f 2 | sed "s/'/\\\\\'/g"`
 	prixAchat=`echo "$line" | cut -d ";" -f 3`
 	prixVente=`echo "$line" | cut -d ";" -f 4`
 	photo=`echo "$line" | cut -d ";" -f 6`
@@ -12,7 +12,8 @@ do
 	max=`echo "$line" | cut -d ";" -f 8`
 	seuil=`echo "$line" | cut -d ";" -f 9`
 	allergies=`echo "$line" | cut -d ";" -f 10`
-	description=`echo "$line" | cut -d ";" -f 11`
+	description=`echo "$line" | cut -d ";" -f 11 | sed "s/'/\\\\\'/g"`
+	#echo "$description"
 
 
 	if [[ -z "$nom" ]]
@@ -50,5 +51,5 @@ do
 
 	prixAchat=`echo "$prixAchat" | sed 's/,/\./g'`
 	prixVente=`echo "$prixVente" | sed 's/,/\./g'`
-	echo "INSERT INTO boisson VALUES ('$nom', $prixAchat, $prixVente, '$photo', $stock, $max, $seuil, '$description');" >> commandes.sql
+	echo "INSERT INTO Boissons VALUES ('$nom', $prixAchat, $prixVente, '$description', '$photo', $type, $stock, $seuil, $max);" >> commandes.sql
 done < boissons.cvs
