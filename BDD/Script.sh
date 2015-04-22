@@ -35,7 +35,7 @@ do
 	then
 		photo="null"
 	else
-		photo="'$photo'"
+		photo="\"$photo\""
 	fi
 	if [[ -z "$stock" ]]
 	then
@@ -53,7 +53,7 @@ do
 	then
 		description="null"
 	else
-		description="'$description'"
+		description="\"$description\""
 	fi
 	if [[ -z "$types" ]]
 	then
@@ -62,5 +62,5 @@ do
 
 	prixAchat=`echo "$prixAchat" | sed 's/,/\./g'`
 	prixVente=`echo "$prixVente" | sed 's/,/\./g'`
-	echo "INSERT INTO Boisson VALUES ('$nom', $prixAchat, $prixVente, $description, $photo, '$types', $stock, $seuil, $max);" >> commandes.sql
+	echo "INSERT INTO Boisson VALUES (\"$nom\", $prixAchat, $prixVente, $description, $photo, \"$types\", $stock, $seuil, $max);" >> commandes.sql
 done < boissons.cvs
