@@ -22,11 +22,11 @@ do
 	fi
 	if [[ -z "$prixAchat" ]]
 	then
-		prixAchat="null"
+		prixAchat="4"
 	fi	
 	if [[ -z "$prixVente" ]]
 	then
-		prixVente="null"
+		prixVente="4"
 	fi
 	if [[ -z "$photo" ]]
 	then
@@ -34,15 +34,15 @@ do
 	fi
 	if [[ -z "$stock" ]]
 	then
-		stock="null"
+		stock="4"
 	fi
 	if [[ -z "$max" ]]
 	then
-		max="null"
+		max="4"
 	fi
 	if [[ -z "$seuil" ]]
 	then
-		seuil="null"
+		seuil="4"
 	fi
 	if [[ -z "$description" ]]
 	then
