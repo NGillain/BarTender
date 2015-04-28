@@ -24,9 +24,7 @@
         android:prompt="@string/login_username"
         android:spinnerMode="dropdown"
         android:layout_below="@+id/imageView"
-        android:layout_alignParentRight="true"
-        android:layout_alignParentLeft="true"
-        android:layout_centerHorizontal="true"/>
+        android:layout_alignRight="@+id/login_password" />
 
     <EditText
         android:id="@+id/login_password"
@@ -55,4 +53,14 @@
         android:layout_below="@+id/login_password"
         android:layout_alignParentRight="true"
         style="?android:attr/borderlessButtonStyle"/>
+
+    <TextView
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:textAppearance="?android:attr/textAppearanceLarge"
+        android:text="BIENVENUE !"
+        android:id="@+id/textView"
+        android:layout_below="@+id/login_btn"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="86dp" />
 </RelativeLayout>
