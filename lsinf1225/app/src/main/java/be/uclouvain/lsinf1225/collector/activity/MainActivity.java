@@ -1,4 +1,4 @@
-package be.uclouvain.lsinf1225.musicplayer.activity;
+package be.uclouvain.lsinf1225.collector.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -6,9 +6,9 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 
-import be.uclouvain.lsinf1225.musicplayer.MusicPlayerApp;
-import be.uclouvain.lsinf1225.musicplayer.R;
-import be.uclouvain.lsinf1225.musicplayer.model.User;
+import be.uclouvain.lsinf1225.collector.CollectorApp;
+import be.uclouvain.lsinf1225.collector.R;
+import be.uclouvain.lsinf1225.collector.model.User;
 
 /**
  * Gère l'affichage du menu principal de l'application.
@@ -65,7 +65,7 @@ public class MainActivity extends Activity {
      * Lance l'activité d'ajout d'un élément.
      */
     public void add(View v) {
-        Intent intent = new Intent(this, PlayerActivity.class);
+        Intent intent = new Intent(this, AddActivity.class);
         startActivity(intent);
     }
 
@@ -77,6 +77,6 @@ public class MainActivity extends Activity {
     public void onBackPressed() {
         // On désactive le retour (car on se trouve au menu principal) en ne faisant
         // rien dans cette méthode si ce n'est afficher un message à l'utilisateur.
-        MusicPlayerApp.notifyShort(R.string.main_back_button_disable);
+        CollectorApp.notifyShort(R.string.main_back_button_disable);
     }
 }

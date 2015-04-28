@@ -1,4 +1,4 @@
-package be.uclouvain.lsinf1225.musicplayer.activity.adapter;
+package be.uclouvain.lsinf1225.collector.activity.adapter;
 
 import android.content.Context;
 import android.view.LayoutInflater;
@@ -10,8 +10,8 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import be.uclouvain.lsinf1225.musicplayer.R;
-import be.uclouvain.lsinf1225.musicplayer.model.CollectedItem;
+import be.uclouvain.lsinf1225.collector.R;
+import be.uclouvain.lsinf1225.collector.model.CollectedItem;
 
 /**
  * Gère l'affichage personnalisé de notre liste.
@@ -84,7 +84,7 @@ public class MyListViewAdapter extends BaseAdapter {
         RatingBar ratingBar = (RatingBar) convertView.findViewById(R.id.show_row_rating);
 
         // Récupération et placement des données.
-        Song collectedItem = collectedItems.get(position);
+        CollectedItem collectedItem = collectedItems.get(position);
         nameTextView.setText(collectedItem.getName());
         ratingBar.setRating(collectedItem.getRating());
 

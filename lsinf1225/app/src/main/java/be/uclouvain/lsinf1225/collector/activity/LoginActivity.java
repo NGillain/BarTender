@@ -1,4 +1,4 @@
-package be.uclouvain.lsinf1225.musicplayer.activity;
+package be.uclouvain.lsinf1225.collector.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -13,9 +13,9 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import be.uclouvain.lsinf1225.musicplayer.MusicPlayerApp;
-import be.uclouvain.lsinf1225.musicplayer.R;
-import be.uclouvain.lsinf1225.musicplayer.model.User;
+import be.uclouvain.lsinf1225.collector.CollectorApp;
+import be.uclouvain.lsinf1225.collector.R;
+import be.uclouvain.lsinf1225.collector.model.User;
 
 /**
  * Gère l'écran de connexion des utilisateurs à l'application.
@@ -93,7 +93,7 @@ public class LoginActivity extends Activity implements TextView.OnEditorActionLi
             Intent intent = new Intent(this, MainActivity.class);
             startActivity(intent);
         } else {
-            MusicPlayerApp.notifyShort(R.string.login_wrong_password_msg);
+            CollectorApp.notifyShort(R.string.login_wrong_password_msg);
         }
     }
 

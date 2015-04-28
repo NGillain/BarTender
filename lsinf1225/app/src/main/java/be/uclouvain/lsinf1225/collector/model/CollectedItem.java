@@ -1,11 +1,10 @@
-package be.uclouvain.lsinf1225.musicplayer.model;
+package be.uclouvain.lsinf1225.collector.model;
 
 import android.content.ContentValues;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
-import android.util.Log;
 import android.util.SparseArray;
 
 import java.io.FileInputStream;
@@ -13,8 +12,8 @@ import java.io.FileNotFoundException;
 import java.io.IOException;
 import java.util.ArrayList;
 
-import be.uclouvain.lsinf1225.musicplayer.MusicPlayerApp;
-import be.uclouvain.lsinf1225.musicplayer.MySQLiteHelper;
+import be.uclouvain.lsinf1225.collector.CollectorApp;
+import be.uclouvain.lsinf1225.collector.MySQLiteHelper;
 
 
 /**
@@ -32,40 +31,38 @@ import be.uclouvain.lsinf1225.musicplayer.MySQLiteHelper;
  * @author Damien Mercier
  * @version 1
  */
-public class Song {
+public class CollectedItem {
 
     /*
      * Noms des tables et des colonnes dans la base de données.
      */
-    public static final String DB_TABLE_S = "songs";
+    public static final String DB_TABLE_CI = "collected_items";
     public static final String DB_TABLE_OWNS = "owns";
 
-    public static final String DB_COL_ID = "s_id";
-    public static final String DB_COL_NAME = "s_name";
+    public static final String DB_COL_ID = "ci_id";
+    public static final String DB_COL_NAME = "ci_name";
+    public static final String DB_COL_DESCRIPTION = "ci_description";
+    public static final String DB_COL_PICTURE = "ci_picture";
     public static final String DB_COL_UID = "u_id";
-    public static final String DB_COL_RATING = "s_rating";
-    public static final String DB_COL_TITLE = "s_title";
-    public static final String DB_COL_ARTIST = "s_artist";
-    public static final String DB_COL_FILENAME = "s_filename";
-
+    public static final String DB_COL_RATING = "ci_rating";
 
     /* Pour éviter les ambiguités dans les requêtes, il faut utiliser le format
      *      nomDeTable.nomDeColonne
      * lorsque deux tables possèdent le même nom de colonne.
      */
-    public static final String DB_COL_S_ID = DB_TABLE_S + "." + DB_COL_ID;
+    public static final String DB_COL_CI_ID = DB_TABLE_CI + "." + DB_COL_ID;
     public static final String DB_COL_OWNS_ID = DB_TABLE_OWNS + "." + DB_COL_ID;
 
     /*
      * Pour joindre les deux tables dans une même requête.
      */
-    public static final String DB_TABLES = DB_TABLE_S + " INNER JOIN " + DB_TABLE_OWNS + " ON " + DB_COL_S_ID + " = " + DB_COL_OWNS_ID;
+    public static final String DB_TABLES = DB_TABLE_CI + " INNER JOIN " + DB_TABLE_OWNS + " ON " + DB_COL_CI_ID + " = " + DB_COL_OWNS_ID;
 
 
     /**
      * Nom de colonne sur laquelle le tri est effectué
      */
-    public static String order_by = DB_COL_TITLE;
+    public static String order_by = DB_COL_NAME;
     /**
      * Ordre de tri : ASC pour croissant et DESC pour décroissant
      */
@@ -75,6 +72,17 @@ public class Song {
      * ID unique de notre élément courant. Correspond à ci_id dans la base de données.
      */
     private final int id;
+
+    /**
+     * Nom de notre élément courant. Correspond à ci_name dans la base de données.
+     */
+    private String name;
+
+    /**
+     * Description de notre élément courant. Correspond à ci_description dans la base de données.
+     * Est facultatif.
+     */
+    private String description;
 
     /**
      * Note (rating) de notre élément courant entre 0 et 5. Correspond à ci_rating dans la base de
@@ -89,22 +97,6 @@ public class Song {
      */
     private String picture;
 
-    /**
-     * Titre du morceau courant.
-     */
-    private String title;
-
-    /**
-     * Artiste du morceau courant.
-     */
-    private String artist;
-
-    /**
-     * Nom du fichier de musique.
-     */
-    private String filename;
-
-
 
     /**
      * Constructeur de notre élément de collection. Initialise une instance de l'élément présent
@@ -115,12 +107,12 @@ public class Song {
      * utiliserons la méthode statique get(ciId) pour obtenir une instance d'un élément de notre
      * collection.
      */
-    private Song(int ciId) {
+    private CollectedItem(int ciId) {
 
         // On enregistre l'id dans la variable d'instance.
         this.id = ciId;
         // On enregistre l'instance de l'élément de collection courant dans la hashMap.
-        Song.songSparseArray.put(ciId, this);
+        CollectedItem.collectedItemSparseArray.put(ciId, this);
 
         // On charge les données depuis la base de données.
         loadData();
@@ -132,6 +124,21 @@ public class Song {
      */
     public int getId() {
         return id;
+    }
+
+    /**
+     * Fournit le nom de l'élément de collection courant.
+     */
+    public String getName() {
+        return name;
+    }
+
+    /**
+     * Fournit la description de l'élément de collection courant ou null s'il n'y a aucune
+     * description.
+     */
+    public String getDescription() {
+        return description;
     }
 
     /**
@@ -159,7 +166,7 @@ public class Song {
              *  comprendre les différentes possibilités.
              */
 
-            FileInputStream in = MusicPlayerApp.getContext().openFileInput(picture);
+            FileInputStream in = CollectorApp.getContext().openFileInput(picture);
             Bitmap bitmap = BitmapFactory.decodeStream(in);
             in.close();
 
@@ -170,18 +177,6 @@ public class Song {
             e.printStackTrace();
         }
         return null;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public String getArtist() {
-        return artist;
-    }
-
-    public String getFilename() {
-        return filename;
     }
 
 
@@ -236,22 +231,22 @@ public class Song {
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
         // Colonnes pour lesquelles il nous faut les données.
-        String[] columns = new String[]{DB_COL_TITLE, DB_COL_ARTIST, DB_COL_FILENAME};
+        String[] columns = new String[]{DB_COL_NAME, DB_COL_DESCRIPTION, DB_COL_PICTURE};
 
         // Critères de sélection de la ligne :
         String selection = DB_COL_ID + " = ? ";
         String[] selectionArgs = new String[]{String.valueOf(id)};
 
         // Requête SELECT à la base de données.
-        Cursor c = db.query(DB_TABLE_S, columns, selection, selectionArgs, null, null, null);
+        Cursor c = db.query(DB_TABLE_CI, columns, selection, selectionArgs, null, null, null);
 
         // Placement du curseur sur le  premier résultat (ici le seul puisque l'objet est unique).
         c.moveToFirst();
 
         // Copie des données de la ligne vers les variables d'instance de l'objet courant.
-        this.title = c.getString(0);
-        this.artist = c.getString(1);
-        this.filename = c.getString(2);
+        this.name = c.getString(0);
+        this.description = c.getString(1);
+        this.picture = c.getString(2);
 
         // Fermeture du curseur.
         c.close();
@@ -291,7 +286,7 @@ public class Song {
      * Contient les instances déjà existantes des objets afin d'éviter de créer deux instances du
      * même objet.
      */
-    private static final SparseArray<Song> songSparseArray = new SparseArray<Song>();
+    private static final SparseArray<CollectedItem> collectedItemSparseArray = new SparseArray<CollectedItem>();
 
 
     /**
@@ -307,18 +302,19 @@ public class Song {
      * @return Vrai (true) en cas de succès, faux (false) en cas d'échec.
      * @post Enregistre le nouvel objet dans la base de données.
      */
-    public static boolean create(String title, float rating) {
+    public static boolean create(String name, String description, float rating, String picture) {
 
         // Récupération de la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getWritableDatabase();
 
         // Définition des valeurs pour le nouvel élément dans la table "collected_items".
         ContentValues cv = new ContentValues();
-        cv.put(DB_COL_TITLE, title);
-
+        cv.put(DB_COL_NAME, name);
+        cv.put(DB_COL_DESCRIPTION, description);
+        cv.put(DB_COL_PICTURE, picture);
 
         // Ajout à la base de données (table collected_items).
-        int ci_id = (int) db.insert(DB_TABLE_S, null, cv);
+        int ci_id = (int) db.insert(DB_TABLE_CI, null, cv);
 
         if (ci_id == -1) {
             return false; // En cas d'erreur d'ajout, on retourne false directement.
@@ -336,7 +332,7 @@ public class Song {
             // En cas d'erreur dans l'ajout de la deuxième table, il faut supprimer la ligne qu'on
             // vient d'ajouter dans la première table pour ne pas qu'il y ait un élément qui n'est
             // dans la collection de personne.
-            db.delete(DB_TABLE_S, DB_COL_ID + " = ?", new String[]{String.valueOf(ci_id)});
+            db.delete(DB_TABLE_CI, DB_COL_ID + " = ?", new String[]{String.valueOf(ci_id)});
             return false;
         }
         return true;
@@ -347,7 +343,7 @@ public class Song {
      *
      * @return Liste d'éléments.
      */
-    public static ArrayList<Song> getSongs() {
+    public static ArrayList<CollectedItem> getCollectedItems() {
         // Récupération de l'ID de l'utilisateur courant.
         int u_id = User.getConnectedUser().getId();
 
@@ -356,7 +352,7 @@ public class Song {
         String[] selectionArgs = new String[]{String.valueOf(u_id)};
 
         // Le critère de sélection est passé à la sous-méthode de récupération des éléments.
-        return getSongs(selection, selectionArgs);
+        return getCollectedItems(selection, selectionArgs);
     }
 
     /**
@@ -367,23 +363,23 @@ public class Song {
      *
      * @return Liste d'éléments de collection répondant à la requête de recherche.
      */
-    public static ArrayList<Song> searchSongs(String searchQuery) {
+    public static ArrayList<CollectedItem> searchCollectedItems(String searchQuery) {
         // Récupération de l'id de l'utilisateur courant.
         int u_id = User.getConnectedUser().getId();
 
         // Critères de sélection (partie WHERE) : appartiennent à l'utilisateur courant et ont un nom
         // correspondant à la requête de recherche.
-        String selection = DB_COL_UID + " = ? AND " + DB_COL_TITLE + " LIKE ?";
+        String selection = DB_COL_UID + " = ? AND " + DB_COL_NAME + " LIKE ?";
         String[] selectionArgs = new String[]{String.valueOf(u_id), "%" + searchQuery + "%"};
 
         // Les critères de selection sont passés à la sous-méthode de récupération des éléments.
-        return getSongs(selection, selectionArgs);
+        return getCollectedItems(selection, selectionArgs);
     }
 
     /**
      * Fournit la liste de tous les objets correspondant aux critères de sélection demandés.
      *
-     * Cette méthode est une sous-méthode de getSongs et de searchSongs.
+     * Cette méthode est une sous-méthode de getCollectedItems et de searchCollectedItems.
      *
      * @param selection     Un filtre déclarant quels éléments retourner, formaté comme la clause
      *                      SQL WHERE (excluant le WHERE lui-même). Donner null retournera tous les
@@ -394,19 +390,19 @@ public class Song {
      *
      * @return Liste d'objets. La liste peut être vide si aucun objet ne correspond.
      */
-    private static ArrayList<Song> getSongs(String selection, String[] selectionArgs) {
-        // Initialisation de la liste des songs.
-        ArrayList<Song> songs = new ArrayList<Song>();
+    private static ArrayList<CollectedItem> getCollectedItems(String selection, String[] selectionArgs) {
+        // Initialisation de la liste des collectedItems.
+        ArrayList<CollectedItem> collectedItems = new ArrayList<CollectedItem>();
 
         // Récupération du SQLiteHelper pour récupérer la base de données.
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
         // Colonnes à récupérer. Ici uniquement l'id de l'élément, le reste sera récupéré par
         // loadData() à la création de l'instance de l'élément. (choix de développement).
-        String[] columns = new String[]{DB_COL_S_ID};
+        String[] columns = new String[]{DB_COL_CI_ID};
 
         // Requête SELECT à la base de données.
-        Cursor c = db.query(DB_TABLES, columns, selection, selectionArgs, null, null, Song.order_by + " " + Song.order);
+        Cursor c = db.query(DB_TABLES, columns, selection, selectionArgs, null, null, CollectedItem.order_by + " " + CollectedItem.order);
 
         c.moveToFirst();
         while (!c.isAfterLast()) {
@@ -414,10 +410,10 @@ public class Song {
             int ciId = c.getInt(0);
             // L'instance de l'élément de collection est récupéré avec la méthode get(ciId)
             // (Si l'instance n'existe pas encore, elle est créée par la méthode get)
-            Song song = Song.get(ciId);
+            CollectedItem collectedItem = CollectedItem.get(ciId);
 
             // Ajout de l'élément de collection à la liste.
-            songs.add(song);
+            collectedItems.add(collectedItem);
 
             c.moveToNext();
         }
@@ -426,7 +422,7 @@ public class Song {
         c.close();
         db.close();
 
-        return songs;
+        return collectedItems;
     }
 
 
@@ -439,34 +435,26 @@ public class Song {
      * @return L'instance de l'élément de collection.
      * @pre L'élément correspondant à l'id donné doit exister dans la base de données.
      */
-    public static Song get(int ciId) {
-        Song ci = Song.songSparseArray.get(ciId);
+    public static CollectedItem get(int ciId) {
+        CollectedItem ci = CollectedItem.collectedItemSparseArray.get(ciId);
         if (ci != null) {
             return ci;
         }
-        return new Song(ciId);
+        return new CollectedItem(ciId);
     }
 
 
     /**
      * Inverse l'ordre de tri actuel.
      *
-     * @pre La valeur de Song.order est soit ASC soit DESC.
-     * @post La valeur de Song.order a été modifiée et est soit ASC soit DESC.
+     * @pre La valeur de CollectedItem.order est soit ASC soit DESC.
+     * @post La valeur de CollectedItem.order a été modifiée et est soit ASC soit DESC.
      */
     public static void reverseOrder() {
-        if (Song.order.equals("ASC")) {
-            Song.order = "DESC";
+        if (CollectedItem.order.equals("ASC")) {
+            CollectedItem.order = "DESC";
         } else {
-            Song.order = "ASC";
+            CollectedItem.order = "ASC";
         }
-    }
-
-    /**
-     * Fournit une représentation sous forme de texte du morceau. Utilisé pour la liste dans
-     * PlayerActivity.
-     */
-    public String toString() {
-        return getTitle() + " - " + getArtist();
     }
 }

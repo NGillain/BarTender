@@ -1,11 +1,11 @@
-package be.uclouvain.lsinf1225.musicplayer.activity;
+package be.uclouvain.lsinf1225.collector.activity;
 
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.widget.SearchView;
 
-import be.uclouvain.lsinf1225.musicplayer.R;
+import be.uclouvain.lsinf1225.collector.R;
 
 /**
  * Gère l'affichage de la fonction de recherche d'éléments.

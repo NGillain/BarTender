@@ -1,4 +1,4 @@
-package be.uclouvain.lsinf1225.musicplayer.activity;
+package be.uclouvain.lsinf1225.collector.activity;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,10 +11,10 @@ import android.widget.TextView;
 
 import java.util.ArrayList;
 
-import be.uclouvain.lsinf1225.musicplayer.MusicPlayerApp;
-import be.uclouvain.lsinf1225.musicplayer.R;
-import be.uclouvain.lsinf1225.musicplayer.activity.adapter.MyListViewAdapter;
-import be.uclouvain.lsinf1225.musicplayer.model.CollectedItem;
+import be.uclouvain.lsinf1225.collector.CollectorApp;
+import be.uclouvain.lsinf1225.collector.R;
+import be.uclouvain.lsinf1225.collector.activity.adapter.MyListViewAdapter;
+import be.uclouvain.lsinf1225.collector.model.CollectedItem;
 
 /**
  * Gère l'affichage sous forme de liste des éléments de la collection de l'utilisateur en cours. Si
@@ -82,9 +82,9 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         // "Aucun élément n'est présent dans votre collection).
         if (collectedItems.isEmpty()) {
             if (searchQuery == null) {
-                MusicPlayerApp.notifyShort(R.string.show_list_error_no_item);
+                CollectorApp.notifyShort(R.string.show_list_error_no_item);
             } else {
-                MusicPlayerApp.notifyShort(R.string.show_list_no_result);
+                CollectorApp.notifyShort(R.string.show_list_no_result);
             }
             // Cloture de l'activité d'affichage de la liste (car liste vide). Retour à l'écran
             // précédent.

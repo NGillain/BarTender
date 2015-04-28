@@ -1,4 +1,4 @@
-package be.uclouvain.lsinf1225.musicplayer.activity;
+package be.uclouvain.lsinf1225.collector.activity;
 
 import android.app.Activity;
 import android.content.Context;
@@ -18,8 +18,9 @@ import android.widget.RatingBar;
 import java.io.FileOutputStream;
 import java.util.Date;
 
-import be.uclouvain.lsinf1225.musicplayer.MusicPlayerApp;
-import be.uclouvain.lsinf1225.musicplayer.R;
+import be.uclouvain.lsinf1225.collector.CollectorApp;
+import be.uclouvain.lsinf1225.collector.R;
+import be.uclouvain.lsinf1225.collector.model.CollectedItem;
 
 
 /**
@@ -28,7 +29,7 @@ import be.uclouvain.lsinf1225.musicplayer.R;
  * @author Damien Mercier
  * @version 1
  */
-public class PlayerActivity extends Activity {
+public class AddActivity extends Activity {
 
     /**
      * Code de requête pour les activités externes.
@@ -229,11 +230,11 @@ public class PlayerActivity extends Activity {
         String pictureFilename = getPicture();
 
         /* Création de l'élément */
-        if (Song.create(name, description, rating, pictureFilename)) {
-            MusicPlayerApp.notifyLong(R.string.add_success_msg);
+        if (CollectedItem.create(name, description, rating, pictureFilename)) {
+            CollectorApp.notifyLong(R.string.add_success_msg);
             finish(); // On termine l'activité d'ajout afin de retourner au menu principal.
         } else {
-            MusicPlayerApp.notifyLong(R.string.add_error_on_create);
+            CollectorApp.notifyLong(R.string.add_error_on_create);
         }
 
     }
@@ -244,7 +245,7 @@ public class PlayerActivity extends Activity {
         String name = String.valueOf(nameEditText.getText());
 
         if (name.isEmpty()) {
-            MusicPlayerApp.notifyShort(R.string.add_error_name_required);
+            CollectorApp.notifyShort(R.string.add_error_name_required);
             return null;
         }
         return name;

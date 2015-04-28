@@ -1,4 +1,4 @@
-package be.uclouvain.lsinf1225.musicplayer.model;
+package be.uclouvain.lsinf1225.collector.model;
 
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
@@ -6,7 +6,7 @@ import android.util.SparseArray;
 
 import java.util.ArrayList;
 
-import be.uclouvain.lsinf1225.musicplayer.MySQLiteHelper;
+import be.uclouvain.lsinf1225.collector.MySQLiteHelper;
 
 
 /**

@@ -1,4 +1,4 @@
-package be.uclouvain.lsinf1225.musicplayer;
+package be.uclouvain.lsinf1225.collector;
 
 import android.app.Application;
 import android.view.Gravity;
@@ -17,29 +17,29 @@ import android.widget.Toast;
  * @author Damien Mercier
  * @version 1
  * @note Pour que cette classe soit utilisée par Android, il faut la déclarer dans
- * l'AndroidManifest.xml : <application android:name="be.uclouvain.lsinf1225.collector.MusicPlayerApp"
+ * l'AndroidManifest.xml : <application android:name="be.uclouvain.lsinf1225.collector.CollectorApp"
  * (...)>(...)</application>
  */
 
-public class MusicPlayerApp extends Application {
+public class CollectorApp extends Application {
 
     /**
      * Référence au contexte de l'application
      */
-    private static MusicPlayerApp context;
+    private static CollectorApp context;
 
     /**
      * Fournit le contexte de l'application.
      *
      * @return Contexte de l'application.
      */
-    public static MusicPlayerApp getContext() {
+    public static CollectorApp getContext() {
         return context;
     }
 
     public void onCreate() {
         super.onCreate();
-        context = (MusicPlayerApp) getApplicationContext();
+        context = (CollectorApp) getApplicationContext();
     }
 
     /**
@@ -47,7 +47,7 @@ public class MusicPlayerApp extends Application {
      *
      * @param resId Id de la ressource (R.string.* ) contenant le message à afficher.
      *
-     * @see MusicPlayerApp#notify
+     * @see CollectorApp#notify
      */
     public static void notifyShort(int resId) {
         notify(resId, Toast.LENGTH_SHORT);
@@ -58,7 +58,7 @@ public class MusicPlayerApp extends Application {
      *
      * @param resId Id de la ressource (R.string.* ) contenant le message à afficher.
      *
-     * @see MusicPlayerApp#notify
+     * @see CollectorApp#notify
      */
     public static void notifyLong(int resId) {
         notify(resId, Toast.LENGTH_LONG);
