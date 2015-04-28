@@ -36,36 +36,33 @@ public class CollectedItem {
     /*
      * Noms des tables et des colonnes dans la base de données.
      */
-    public static final String DB_TABLE_BOISSON = "Boisson";
+    public static final String DB_TABLE_CI = "collected_items";
     public static final String DB_TABLE_OWNS = "owns";
 
-    public static final String DB_COL_NOM = "Nom";
-    public static final String DB_COL_PRIX_ACHAT = "PrixAchat";
-    public static final String DB_COL_PRIX_VENTE = "PrixVente";
-    public static final String DB_COL_DESCRIPTION = "Description";
-    public static final String DB_COL_PHOTO = "Photo";
-    public static final String DB_COL_TYPE = "Type";
-    public static final String DB_COL_STOCK = "Stock";
-    public static final String DB_COL_SEUIL = "Seuil";
-    public static final String DB_COL_MAX = "Max";
+    public static final String DB_COL_ID = "ci_id";
+    public static final String DB_COL_NAME = "ci_name";
+    public static final String DB_COL_DESCRIPTION = "ci_description";
+    public static final String DB_COL_PICTURE = "ci_picture";
+    public static final String DB_COL_UID = "u_id";
+    public static final String DB_COL_RATING = "ci_rating";
 
     /* Pour éviter les ambiguités dans les requêtes, il faut utiliser le format
      *      nomDeTable.nomDeColonne
      * lorsque deux tables possèdent le même nom de colonne.
      */
-    public static final String DB_COL_CI_ID = DB_TABLE_BOISSON + "." + DB_COL_NOM;
-    public static final String DB_COL_OWNS_ID = DB_TABLE_OWNS + "." + DB_COL_NOM;
+    public static final String DB_COL_CI_ID = DB_TABLE_CI + "." + DB_COL_ID;
+    public static final String DB_COL_OWNS_ID = DB_TABLE_OWNS + "." + DB_COL_ID;
 
     /*
      * Pour joindre les deux tables dans une même requête.
      */
-    public static final String DB_TABLES = DB_TABLE_BOISSON + " INNER JOIN " + DB_TABLE_OWNS + " ON " + DB_COL_CI_ID + " = " + DB_COL_OWNS_ID;
+    public static final String DB_TABLES = DB_TABLE_CI + " INNER JOIN " + DB_TABLE_OWNS + " ON " + DB_COL_CI_ID + " = " + DB_COL_OWNS_ID;
 
 
     /**
      * Nom de colonne sur laquelle le tri est effectué
      */
-    public static String order_by = DB_COL_PRIX_ACHAT;
+    public static String order_by = DB_COL_NAME;
     /**
      * Ordre de tri : ASC pour croissant et DESC pour décroissant
      */
@@ -204,10 +201,10 @@ public class CollectedItem {
 
         // Indique les valeurs à mettre à jour.
         ContentValues values = new ContentValues();
-        values.put(DB_COL_SEUIL, newRating);
+        values.put(DB_COL_RATING, newRating);
 
         // Indique sur quelle ligne effectuer la mise à jour.
-        String selection = DB_COL_TYPE + " = ? AND " + DB_COL_NOM + " = ?";
+        String selection = DB_COL_UID + " = ? AND " + DB_COL_ID + " = ?";
         String[] selectionArgs = new String[]{String.valueOf(User.getConnectedUser().getId()), String.valueOf(id)};
 
         // Requête UPDATE sur la base de données.
@@ -234,14 +231,14 @@ public class CollectedItem {
         SQLiteDatabase db = MySQLiteHelper.get().getReadableDatabase();
 
         // Colonnes pour lesquelles il nous faut les données.
-        String[] columns = new String[]{DB_COL_PRIX_ACHAT, DB_COL_DESCRIPTION, DB_COL_PHOTO};
+        String[] columns = new String[]{DB_COL_NAME, DB_COL_DESCRIPTION, DB_COL_PICTURE};
 
         // Critères de sélection de la ligne :
-        String selection = DB_COL_NOM + " = ? ";
+        String selection = DB_COL_ID + " = ? ";
         String[] selectionArgs = new String[]{String.valueOf(id)};
 
         // Requête SELECT à la base de données.
-        Cursor c = db.query(DB_TABLE_BOISSON, columns, selection, selectionArgs, null, null, null);
+        Cursor c = db.query(DB_TABLE_CI, columns, selection, selectionArgs, null, null, null);
 
         // Placement du curseur sur le  premier résultat (ici le seul puisque l'objet est unique).
         c.moveToFirst();
@@ -259,10 +256,10 @@ public class CollectedItem {
         this.rating = new SparseArray<Float>();
 
         // Colonnes à récupérérer.
-        columns = new String[]{DB_COL_TYPE, DB_COL_SEUIL};
+        columns = new String[]{DB_COL_UID, DB_COL_RATING};
 
         // Critères de sélection de la ligne.
-        selection = DB_COL_NOM + " = ?";
+        selection = DB_COL_ID + " = ?";
         selectionArgs = new String[]{String.valueOf(id)};
 
         // Requête SELECT à la base de données.
@@ -312,12 +309,12 @@ public class CollectedItem {
 
         // Définition des valeurs pour le nouvel élément dans la table "collected_items".
         ContentValues cv = new ContentValues();
-        cv.put(DB_COL_PRIX_ACHAT, name);
+        cv.put(DB_COL_NAME, name);
         cv.put(DB_COL_DESCRIPTION, description);
-        cv.put(DB_COL_PHOTO, picture);
+        cv.put(DB_COL_PICTURE, picture);
 
         // Ajout à la base de données (table collected_items).
-        int ci_id = (int) db.insert(DB_TABLE_BOISSON, null, cv);
+        int ci_id = (int) db.insert(DB_TABLE_CI, null, cv);
 
         if (ci_id == -1) {
             return false; // En cas d'erreur d'ajout, on retourne false directement.
@@ -326,8 +323,8 @@ public class CollectedItem {
 
         // Définition des valeurs pour le nouvel élément dans la table "owns".
         cv.put(DB_COL_ID, ci_id);
-        cv.put(DB_COL_TYPE, User.getConnectedUser().getId());
-        cv.put(DB_COL_SEUIL, rating);
+        cv.put(DB_COL_UID, User.getConnectedUser().getId());
+        cv.put(DB_COL_RATING, rating);
 
         int result = (int) db.insert(DB_TABLE_OWNS, null, cv);
 
@@ -335,7 +332,7 @@ public class CollectedItem {
             // En cas d'erreur dans l'ajout de la deuxième table, il faut supprimer la ligne qu'on
             // vient d'ajouter dans la première table pour ne pas qu'il y ait un élément qui n'est
             // dans la collection de personne.
-            db.delete(DB_TABLE_BOISSON, DB_COL_ID + " = ?", new String[]{String.valueOf(ci_id)});
+            db.delete(DB_TABLE_CI, DB_COL_ID + " = ?", new String[]{String.valueOf(ci_id)});
             return false;
         }
         return true;
@@ -351,7 +348,7 @@ public class CollectedItem {
         int u_id = User.getConnectedUser().getId();
 
         // Critère de sélection : appartient à l'utilisateur courant.
-        String selection = DB_COL_TYPE + " = ?";
+        String selection = DB_COL_UID + " = ?";
         String[] selectionArgs = new String[]{String.valueOf(u_id)};
 
         // Le critère de sélection est passé à la sous-méthode de récupération des éléments.
@@ -372,7 +369,7 @@ public class CollectedItem {
 
         // Critères de sélection (partie WHERE) : appartiennent à l'utilisateur courant et ont un nom
         // correspondant à la requête de recherche.
-        String selection = DB_COL_TYPE + " = ? AND " + DB_COL_PRIX_ACHAT + " LIKE ?";
+        String selection = DB_COL_UID + " = ? AND " + DB_COL_NAME + " LIKE ?";
         String[] selectionArgs = new String[]{String.valueOf(u_id), "%" + searchQuery + "%"};
 
         // Les critères de selection sont passés à la sous-méthode de récupération des éléments.
