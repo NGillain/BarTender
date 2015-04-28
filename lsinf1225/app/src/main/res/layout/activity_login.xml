@@ -63,4 +63,17 @@
         android:layout_below="@+id/login_btn"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="86dp" />
+
+    <Button
+        style="?android:attr/borderlessButtonStyle"
+        android:id="@+id/button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:drawableRight="@drawable/ic_go"
+        android:onClick="login"
+        android:text="@string/signin_btn"
+        android:layout_below="@+id/textView"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="54dp" />
 </RelativeLayout>
