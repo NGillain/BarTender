@@ -1,5 +1,16 @@
 # BarTender
 
+Liste des Activites
+-Login
+-Inventaire
+-Menu principal (liste des operations)
+-Carte (liste boissons)
+-Commande
+-Addition (commande validée)
+-Recherche (facultatif : petite barre)
+-Creation utilisateur
+
+
 Repository pour le projet COO bartender
 
 - faits élémentaires (done)
