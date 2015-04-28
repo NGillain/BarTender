@@ -130,23 +130,23 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
         // Détermine si le clic a été fait sur la colonne de nom (name) ou de note (rating).
         switch (view.getId()) {
             case R.id.show_list_name_title:
-                if (CollectedItem.order_by.equals(CollectedItem.DB_COL_NAME)) {
+                if (CollectedItem.order_by.equals(CollectedItem.DB_COL_PRIX_ACHAT)) {
                     // Si le tri est déjà effectué sur les noms, il faut juste inverser l'ordre.
                     CollectedItem.reverseOrder();
                 } else {
                     // Sinon il faut indiquer que le tri se fait sur les noms par ordre alphabétique (croissant)
-                    CollectedItem.order_by = CollectedItem.DB_COL_NAME;
+                    CollectedItem.order_by = CollectedItem.DB_COL_PRIX_ACHAT;
                     CollectedItem.order = "ASC";
                 }
                 break;
             case R.id.show_list_rating_title:
-                if (CollectedItem.order_by.equals(CollectedItem.DB_COL_RATING)) {
+                if (CollectedItem.order_by.equals(CollectedItem.DB_COL_SEUIL)) {
                     // Si le tri est déjà effectué sur les notes, il faut juste inverser l'ordre
                     CollectedItem.reverseOrder();
                 } else {
                     // Sinon il faut indiquer que le tri se fait sur les notes par ordre décroissant
                     // (la meilleure note d'abord)
-                    CollectedItem.order_by = CollectedItem.DB_COL_RATING;
+                    CollectedItem.order_by = CollectedItem.DB_COL_SEUIL;
                     CollectedItem.order = "DESC";
                 }
                 break;
@@ -187,7 +187,7 @@ public class ShowListActivity extends Activity implements OnItemClickListener {
 
         // Détermination de la colonne sur laquelle le tri est effectué.
         TextView orderTitle;
-        boolean orderByRating = CollectedItem.order_by.equals(CollectedItem.DB_COL_RATING);
+        boolean orderByRating = CollectedItem.order_by.equals(CollectedItem.DB_COL_SEUIL);
         if (orderByRating) {
             orderTitle = ratingTitle;
         } else {
