@@ -4,7 +4,9 @@ rm commandes.sql
 
 while read line
 do
-	nom=`echo "$line" | cut -d ";" -f 2 | sed "s/'/\\\\\'/g"`
+	types=`echo "$line" | cut -d ";" -f 1`
+	#nom=`echo "$line" | cut -d ";" -f 2 | sed "s/'/\\\\\'/g"`
+	nom=`echo "$line" | cut -d ";" -f 2`
 	prixAchat=`echo "$line" | cut -d ";" -f 3`
 	prixVente=`echo "$line" | cut -d ";" -f 4`
 	photo=`echo "$line" | cut -d ";" -f 6`
@@ -12,7 +14,8 @@ do
 	max=`echo "$line" | cut -d ";" -f 8`
 	seuil=`echo "$line" | cut -d ";" -f 9`
 	allergies=`echo "$line" | cut -d ";" -f 10`
-	description=`echo "$line" | cut -d ";" -f 11 | sed "s/'/\\\\\'/g"`
+	#description=`echo "$line" | cut -d ";" -f 11 | sed "s/'/\\\\\'/g"`
+	description=`echo "$line" | cut -d ";" -f 11`
 	#echo "$description"
 
 
@@ -22,34 +25,44 @@ do
 	fi
 	if [[ -z "$prixAchat" ]]
 	then
-		prixAchat="null"
+		prixAchat="4"
 	fi	
 	if [[ -z "$prixVente" ]]
 	then
-		prixVente="null"
+		prixVente="4"
 	fi
 	if [[ -z "$photo" ]]
 	then
 		photo="null"
+	else
+		photo="\"$photo\""
 	fi
 	if [[ -z "$stock" ]]
 	then
-		stock="null"
+		stock="4"
 	fi
 	if [[ -z "$max" ]]
 	then
-		max="null"
+		max="4"
 	fi
 	if [[ -z "$seuil" ]]
 	then
-		seuil="null"
+		seuil="4"
 	fi
 	if [[ -z "$description" ]]
 	then
 		description="null"
+	else
+		description="\"$description\""
+	fi
+	if [[ -z "$types" ]]
+	then
+		types="null"
 	fi
 
 	prixAchat=`echo "$prixAchat" | sed 's/,/\./g'`
 	prixVente=`echo "$prixVente" | sed 's/,/\./g'`
-	echo "INSERT INTO Boissons VALUES ('$nom', $prixAchat, $prixVente, '$description', '$photo', $type, $stock, $seuil, $max);" >> commandes.sql
+	echo "INSERT INTO Boisson VALUES (\"$nom\", $prixAchat, $prixVente, $description, $photo, \"$types\", $stock, $seuil, $max);" >> commandes.sql
 done < boissons.cvs
+
+echo "$(tail -n +2 commandes.sql)" > commandes.sql
