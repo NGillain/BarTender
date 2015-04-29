@@ -55,4 +55,16 @@
         android:layout_below="@+id/login_password"
         android:layout_alignParentRight="true"
         style="?android:attr/borderlessButtonStyle"/>
+
+    <Button
+        android:id="@+id/signin_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:drawableRight="@drawable/ic_go"
+        android:onClick="signin"
+        android:text="@string/signin_btn"
+        android:layout_below="@+id/login_btn"
+        android:layout_alignParentRight="true"
+        style="?android:attr/borderlessButtonStyle"/>
 </RelativeLayout>

@@ -4,7 +4,7 @@
             android:layout_gravity="left"
             android:padding="@dimen/default_padding"
             android:columnCount="2"
-            android:rowCount="6">
+            android:rowCount="5">
 
     <TextView
         android:text="@string/add_name"
@@ -75,6 +75,14 @@
             style="?android:attr/buttonBarButtonStyle"
             />
 
+        <Button
+            android:drawableLeft="@drawable/ic_picture"
+            android:onClick="selectPicture"
+            android:text="@string/add_select_picture"
+            android:layout_height="wrap_content"
+            android:layout_width="wrap_content"
+            style="?android:attr/buttonBarButtonStyle"
+            />
     </LinearLayout>
 
     <ImageView
@@ -89,14 +97,4 @@
         android:layout_row="4"
         android:layout_width="fill_parent"
         />
-
-    <Button
-        android:drawableLeft="@drawable/ic_picture"
-        android:onClick="selectPicture"
-        android:text="@string/add_select_picture"
-        android:layout_height="wrap_content"
-        android:layout_width="wrap_content"
-        style="?android:attr/buttonBarButtonStyle"
-        android:layout_row="5"
-        android:layout_column="1" />
 </GridLayout>
