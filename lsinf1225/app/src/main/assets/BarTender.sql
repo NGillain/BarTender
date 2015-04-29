@@ -1,17 +1,3 @@
-DROP TABLE IF EXISTS "Addition";
-CREATE TABLE Addition(AddNum int(9) not null,Date DATETIME not null, ServeurLogin char(32) not null REFERENCES Utilisateur(login), ClientLogin char(32) not null REFERENCES Utilisateur(Login),NumTable int(2) not null, primary key (AddNum));
-INSERT INTO "Addition" VALUES(1,'2015-02-26','Mik','Abra',4);
-INSERT INTO "Addition" VALUES(2,'2015-02-28','AMaalouf','Abra',6);
-
-DROP TABLE IF EXISTS "Allergene";
-CREATE TABLE "Allergene" ("Boisson" char(32) NOT NULL  DEFAULT (null) ,"Allergene" char(32) NOT NULL  DEFAULT (null) );
-INSERT INTO "Allergene" VALUES('Cappucino','lactose');
-INSERT INTO "Allergene" VALUES('Ricard','lactose');
-
-DROP TABLE IF EXISTS "Allergie";
-CREATE TABLE "Allergie"(Login char(32) not null REFERENCES Utilisateur(login),Allergene char(32) not null);
-INSERT INTO "Allergie" VALUES('Abra','Soja');
-
 DROP TABLE IF EXISTS [Boisson];
 CREATE TABLE [Boisson] ([Nom] char(32) PRIMARY KEY  NOT NULL  DEFAULT (null) ,[PrixAchat] int NOT NULL  DEFAULT (null) ,[PrixVente] int NOT NULL  DEFAULT (null) ,[Description] char(256) DEFAULT (null) ,[Photo] char(32) DEFAULT (null) ,[Type] char(16) NOT NULL  DEFAULT (null) ,[Stock] int NOT NULL  DEFAULT (null) ,[Seuil] int NOT NULL  DEFAULT (null) ,[Max] int NOT NULL  DEFAULT (null) );
 INSERT INTO [Boisson] ([Nom], [PrixAchat], [PrixVente], [Description], [Photo], [Type], [Stock], [Seuil], [Max]) VALUES ("Coca Cola", 4, 2, "Le Coca-Cola est une boisson gazeuse sucrée de type cola fabriquée par la Coca-Cola Company. Le nom « Coca-Cola » provient de deux ingrédients utilisés pour sa composition originelle : la feuille de coca et la noix de kola.", "coca.jpg", "Softs", 4, 4, 4);
@@ -105,24 +91,3 @@ INSERT INTO [Boisson] ([Nom], [PrixAchat], [PrixVente], [Description], [Photo], 
 INSERT INTO [Boisson] ([Nom], [PrixAchat], [PrixVente], [Description], [Photo], [Type], [Stock], [Seuil], [Max]) VALUES ("Rouge 1/4", 4, 7.5, null, null, "Vins", 4, 4, 4);
 INSERT INTO [Boisson] ([Nom], [PrixAchat], [PrixVente], [Description], [Photo], [Type], [Stock], [Seuil], [Max]) VALUES ("Rouge 1/2", 4, 14, null, null, "Vins", 4, 4, 4);
 INSERT INTO [Boisson] ([Nom], [PrixAchat], [PrixVente], [Description], [Photo], [Type], [Stock], [Seuil], [Max]) VALUES ("Rouge Bouteille", 4, 20, null, null, "Vins", 4, 4, 4);
-
-DROP TABLE IF EXISTS "Consommation";
-CREATE TABLE "Consommation" ("AddNum" int(9) NOT NULL ,"Boisson" char(32) NOT NULL ,"Quantite" int(2) NOT NULL  DEFAULT (null) );
-INSERT INTO "Consommation" VALUES(1,'Coca-Cola',2);
-INSERT INTO "Consommation" VALUES(1,'Bière',2);
-INSERT INTO "Consommation" VALUES(2,'Bière',2);
-INSERT INTO "Consommation" VALUES(2,'Martini Blanc',1);
-
-DROP TABLE IF EXISTS "Image";
-CREATE TABLE "Image" ("Type" int NOT NULL  DEFAULT (null) ,"Logo" char(32) NOT NULL  DEFAULT (null) );
-INSERT INTO "Image" VALUES(1,'soft.jpg');
-INSERT INTO "Image" VALUES(2,'boissonChaude.jpg');
-INSERT INTO "Image" VALUES(3,'biere.jpg');
-INSERT INTO "Image" VALUES(4,'spiritueux.jpg');
-INSERT INTO "Image" VALUES(5,'vin.jpg');
-
-DROP TABLE IF EXISTS "Utilisateur";
-CREATE TABLE Utilisateur ( Login char(32) not null, MotDePasse char(32) not null, Statut char(16) not null DEFAULT 'Client',Sexe char(1),Religion char(32),Age INT(3),Nom Char(64),Primary key (Login));
-INSERT INTO "Utilisateur" VALUES('AAli','PSG','Serveur','M','Musulman',42,'Ahmed Ali');
-INSERT INTO "Utilisateur" VALUES('Abra','Kadabra','Client','M','Juif',24,'Abraham Iosov');
-INSERT INTO "Utilisateur" VALUES('Mik','Jackson','Patron','M','Bouddhiste',61,'Kim Bling');
