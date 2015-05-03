@@ -1,0 +1,66 @@
+<?xml version="1.0" encoding="utf-8"?>
+<LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:orientation="vertical" android:layout_width="match_parent"
+    android:layout_height="match_parent">
+
+    <EditText
+        android:id="@+id/login_login"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:hint="@string/login_login_hint"
+        android:imeActionLabel="@string/login_btn"
+        android:imeActionId="6"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:layout_below="@+id/login_username"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/login_password"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:hint="@string/login_password_hint"
+        android:imeActionLabel="@string/login_btn"
+        android:imeActionId="6"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:layout_below="@+id/login_username"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"/>
+
+    <EditText
+        android:id="@+id/login_confirmpassword"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:ems="10"
+        android:hint="@string/login_confirmpassword_hint"
+        android:imeActionLabel="@string/login_btn"
+        android:imeActionId="6"
+        android:imeOptions="actionDone"
+        android:inputType="textPassword"
+        android:layout_below="@+id/login_username"
+        android:layout_alignParentLeft="true"
+        android:layout_alignParentRight="true"
+        android:layout_centerHorizontal="true"/>
+
+    <Button
+        android:id="@+id/login_btn"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_gravity="center_horizontal"
+        android:drawableRight="@drawable/ic_go"
+        android:onClick="signin"
+        android:text="@string/signin2_btn"
+        android:layout_below="@+id/login_confirmpassword"
+        android:layout_alignParentRight="true"
+        style="?android:attr/borderlessButtonStyle"/>
+
+</LinearLayout>
