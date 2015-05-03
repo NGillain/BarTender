@@ -1,0 +1,1 @@
+Les fichiers .sql sont à placer dans un dossier "asserts" dans app/src/main dans le dossier de l'application, soit : BarTender/app/src/main/asserts/*.sql 
