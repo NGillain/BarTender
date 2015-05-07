@@ -1,33 +1,22 @@
-# BarTender
-
-Liste des Activites
--Login
--Inventaire
--Menu principal (liste des operations)
--Carte (liste boissons)
--Commande
--Addition (commande validée)
--Recherche (facultatif : petite barre)
--Creation utilisateur
+TO DO :
+ - Allonger la description des cartes CRC
+ - Changer les liens dans le diagramme de classe concernant la classe reliée à rien du tout
+ - Historique : finir
+ - Commande : finir
+ - Rapport à fournir avec la présentation mardi
+ - Rapport concernant l'appli pour vendredi
+ 
 
 
-Repository pour le projet COO bartender
 
-- faits élémentaires (done)
-- schéma ORM (done)
-- schéma relationnel (done)
-- Base de données (done)
-- Rapport S5 (done)
+Mail du tuteur :
 
-Rapport2:
+"Bonjour,
 
-- revoir les responsabilités et collabo des cartes crc
-- classe addition est-elle utile? (à noter dans le schéma UML)
-- utiliser une classe historique à la place (liste chaînée de commandes & ops pour l'affichage des données et rapports)
-- justifier les multiplicités
-- attributs classe historique
-- justifier le type string pour la photo et autres si besoin
-- nommer les argument dans les ops ou juste le type? Bonne question, dans l'exemple il ne les nomment pas mais dans le slide 12 du cours 8a il parle d'un nom d'argument (nomArg) donc perso je mettrais quand même. (Maxime)
-- ajouter recherche boisson au dia uml
-- printmenu dans utilisateur au lieu de acceuil
-- ajout d'une classe inventaire avec ttes les boissons (peut-être de même pour les clients)
+Pour la première partie, la description des cartes CRC étaient un peu trop courte, le Poker planning semblait suivre une règle de soit 1,2 soit 10 et dans votre diagramme de classe, il y a une classe reliée à rien du tout.  C'est surtout ce point qu'il faudrait changer.
+
+Pour le deuxième rapport, il n'y a pas de remarques appelant une modification.
+
+
+
+Benoît"
