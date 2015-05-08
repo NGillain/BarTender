@@ -14,8 +14,8 @@ do
 	max=`echo "$line" | cut -d ";" -f 8`
 	seuil=`echo "$line" | cut -d ";" -f 9`
 	allergies=`echo "$line" | cut -d ";" -f 10`
-	#description=`echo "$line" | cut -d ";" -f 11 | sed "s/'/\\\\\'/g"`
-	description=`echo "$line" | cut -d ";" -f 11`
+	description=`echo "$line" | cut -d ";" -f 11 | sed 's/"/\\"/g'`
+	#description=`echo "$line" | cut -d ";" -f 11`
 	#echo "$description"
 
 

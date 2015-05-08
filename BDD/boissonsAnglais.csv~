@@ -1,6 +1,6 @@
 Type;Nom;Prix Achat;Prix Vente;Contenance;Photo;Stock;Max;Seuil;Allergies;Description
-Soft;Coca Cola;0,3;2;20 cl;coca.jpg;56;72;24;Preservative E211;Coca-Cola is a sweet soft drink cola manufactured by the Coca-Cola Company. The name \"Coca-Cola\" comes from two ingredients used for its original composition: the coca leaf and kola nut.
-Soft;Coca Light;0,35;2,3;20 cl;cocalight.jpg;64;72;24;Preservative E212;The Coca-Cola Light is a version of Coca-Cola without sugar and no calories, the brand is marketed in the United States and in other countries under the \"Diet Coke\".
+Soft;Coca Cola;0,3;2;20 cl;coca.jpg;56;72;24;Preservative E211;"Coca-Cola is a sweet soft drink cola manufactured by the Coca-Cola Company. The name ""Coca-Cola"" comes from two ingredients used for its original composition: the coca leaf and kola nut."
+Soft;Coca Light;0,35;2,3;20 cl;cocalight.jpg;64;72;24;Preservative E212;"The Coca-Cola Light is a version of Coca-Cola without sugar and no calories, the brand is marketed in the United States and in other countries under the ""Diet Coke""."
 Soft;Sprite;0,35;2,3;20 cl;sprite.jpg;35;48;12;Preservative E213;Sprite is a soft drink made with lemon and lime extracts created by The Coca-Cola Company in 1961. Its taste is close to the lemonade. Sprite contains carbon dioxide, citric acid, soda water, sodium citrate, natural essences and sodium benzoate.
 Soft;Fanta;0,35;2,3;20 cl;fanta.jpg;43;48;12;Preservative E214;Fanta is a soft drink with orange flavor. It is a trademark of German soda produced and distributed by The Coca-Cola Company.
 Soft;Orangina;0,4;2,4;20 cl;orangina.jpg;32;48;12;;Orangina is a French sweet soft drink made from oranges and lemons in the group Orangina Schweppes, itself owned by the Suntory group.
