@@ -1,6 +1,6 @@
 #!/bin/bash
 
-rm commandes.sql
+rm commandesAnglais.sql
 
 while read line
 do
@@ -62,7 +62,7 @@ do
 
 	prixAchat=`echo "$prixAchat" | sed 's/,/\./g'`
 	prixVente=`echo "$prixVente" | sed 's/,/\./g'`
-	echo "INSERT INTO [Boisson] ([Nom], [PrixAchat], [PrixVente], [Description], [Photo], [Type], [Stock], [Seuil], [Max]) VALUES (\"$nom\", $prixAchat, $prixVente, $description, $photo, \"$types\", $stock, $seuil, $max);" >> commandes.sql
-done < boissons.cvs
+	echo "INSERT INTO [Boisson] ([Nom], [PrixAchat], [PrixVente], [Description], [Photo], [Type], [Stock], [Seuil], [Max]) VALUES (\"$nom\", $prixAchat, $prixVente, $description, $photo, \"$types\", $stock, $seuil, $max);" >> commandesAnglais.sql
+done < boissonsAnglais.csv
 
-echo "$(tail -n +2 commandes.sql)" > commandes.sql
+echo "$(tail -n +2 commandes.sql)" > commandesAnglais.sql
